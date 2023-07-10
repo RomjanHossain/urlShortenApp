@@ -8,7 +8,7 @@ void main() {
   group('HomePage', () {
     group('route', () {
       test('is routable', () {
-        expect(HomePage.route(), isA<MaterialPageRoute>());
+        expect(HomePage(), isA<MaterialPageRoute>());
       });
     });
 

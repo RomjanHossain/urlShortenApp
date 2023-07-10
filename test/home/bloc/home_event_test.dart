@@ -4,21 +4,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/bloc.dart';
 
 void main() {
-  group('HomeEvent', () {  
+  group('HomeEvent', () {
     group('CustomHomeEvent', () {
       test('supports value equality', () {
         expect(
-          CustomHomeEvent(),
-          equals(const CustomHomeEvent()),
+          ChangePageEvent(1),
+          equals(ChangePageEvent(1)),
         );
       });
     });
     group('constructor', () {
       test('can be instantiated', () {
-        expect(
-          const CustomHomeEvent(),
-          isNotNull
-        );
+        expect(const ChangePageEvent(1), isNotNull);
       });
     });
   });
