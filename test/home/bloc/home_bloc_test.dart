@@ -23,7 +23,7 @@ void main() {
     blocTest<HomeBloc, HomeState>(
       'CustomHomeEvent emits nothing',
       build: HomeBloc.new,
-      act: (bloc) => bloc.add(const CustomHomeEvent()),
+      act: (bloc) => bloc.add(ChangePageEvent(1)),
       expect: () => <HomeState>[],
     );
   });
