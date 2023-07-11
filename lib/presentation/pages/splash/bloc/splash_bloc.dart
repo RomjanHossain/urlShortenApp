@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:animations/animations.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_shorten/presentation/animations/fade_transition.dart';
+import 'package:url_shorten/presentation/animations/page_transitions.dart';
 import 'package:url_shorten/presentation/pages/home/view/home_page.dart';
 part 'splash_event.dart';
 part 'splash_state.dart';
@@ -25,7 +24,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       // ignore: use_build_context_synchronously
       await Navigator.push(
         event.context,
-        fadeThroughTransitionPageWrapper(const HomePage()),
+        PageAnimationWrapper.fadeThroughTransitionPageWrapper(const HomePage()),
       );
     }
   }
