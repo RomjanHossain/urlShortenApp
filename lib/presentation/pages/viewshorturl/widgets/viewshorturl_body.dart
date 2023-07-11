@@ -14,7 +14,10 @@ class ViewshorturlBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ViewshorturlBloc, ViewshorturlState>(
       builder: (context, state) {
-        return const Center(child: Text('url'));
+        if (state is ViewshorturlInitial) {
+          return Center(child: Text(state.url));
+        }
+        return const Center(child: Text('Nothing to'));
       },
     );
   }
