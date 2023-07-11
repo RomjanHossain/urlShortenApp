@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/viewshorturl_body.dart';
 
-/// {@template viewshorturl_page}
 /// A description for ViewshorturlPage
-/// {@endtemplate}
+
 class ViewshorturlPage extends StatelessWidget {
   /// {@macro viewshorturl_page}
   const ViewshorturlPage({
@@ -18,16 +16,14 @@ class ViewshorturlPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('View Short Url'),
+        title: const Text('View Short Url'),
       ),
-      body: ViewshorturlView(),
+      body: const ViewshorturlView(),
     );
   }
 }
 
-/// {@template viewshorturl_view}
 /// Displays the Body of ViewshorturlView
-/// {@endtemplate}
 class ViewshorturlView extends StatelessWidget {
   /// {@macro viewshorturl_view}
   const ViewshorturlView({super.key});
