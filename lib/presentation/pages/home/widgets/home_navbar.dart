@@ -12,14 +12,14 @@ class HomeBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme _colorScheme = Theme.of(context).colorScheme;
-    HomeState _state = context.watch<HomeBloc>().state;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+    HomeState state = context.watch<HomeBloc>().state;
     return AnimatedBottomNavigationBar(
-      activeIndex: _state is HomeInitial
+      activeIndex: state is HomeInitial
           ? 0
-          : _state is FavoritePageState
+          : state is FavoritePageState
               ? 1
-              : _state is HistoryPageState
+              : state is HistoryPageState
                   ? 2
                   : 3,
       gapLocation: GapLocation.center,
@@ -35,9 +35,9 @@ class HomeBottomNav extends StatelessWidget {
       onTap: (x) {
         context.read<HomeBloc>().add(ChangePageEvent(x));
       },
-      backgroundColor: _colorScheme.primaryContainer,
-      activeColor: _colorScheme.tertiary,
-      inactiveColor: _colorScheme.onBackground,
+      backgroundColor: colorScheme.primaryContainer,
+      activeColor: colorScheme.tertiary,
+      inactiveColor: colorScheme.onBackground,
     );
   }
 }

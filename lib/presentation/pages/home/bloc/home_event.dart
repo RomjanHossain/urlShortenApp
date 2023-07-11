@@ -7,13 +7,20 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-/// {@template custom_home_event}
 /// Event added when some custom logic happens
-/// {@endtemplate}
 class ChangePageEvent extends HomeEvent {
   /// {@macro custom_home_event}
   const ChangePageEvent(this.index);
 
   /// index
   final int index;
+}
+
+// goto view short url page
+class GotoViewShortUrlPageEvent extends HomeEvent {
+  /// {@macro custom_home_event}
+  const GotoViewShortUrlPageEvent(this.context);
+
+  /// url
+  final BuildContext context;
 }
