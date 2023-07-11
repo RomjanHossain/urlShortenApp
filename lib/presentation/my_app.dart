@@ -5,6 +5,7 @@ import 'package:url_shorten/core/params/home_page_params.dart';
 import 'package:url_shorten/presentation/pages/favorite/bloc/favorite_bloc.dart';
 import 'package:url_shorten/presentation/pages/history/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/settings/bloc/bloc.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/bloc/viewshorturl_bloc.dart';
 import 'pages/home/bloc/home_bloc.dart';
 import 'pages/splash/splash.dart';
 
@@ -33,7 +34,11 @@ class MyApp extends StatelessWidget {
         // settings
         BlocProvider(
           create: (context) => SettingsBloc(),
-        )
+        ),
+        // view shorten url
+        BlocProvider(
+          create: (c) => ViewshorturlBloc(),
+        ),
       ],
       // create: (context) => SubjectBloc(),
       child: ThemeProvider(

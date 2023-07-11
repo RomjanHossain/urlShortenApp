@@ -16,4 +16,11 @@ class HomePageParams {
     scheme: FlexScheme.orangeM3,
     useMaterial3: true,
   );
+  //To check if a string is a valid URL
+  static bool isURL(String url) {
+    // Regular expression pattern to match a URL
+    const pattern = r'^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$';
+    final regex = RegExp(pattern);
+    return regex.hasMatch(url);
+  }
 }
