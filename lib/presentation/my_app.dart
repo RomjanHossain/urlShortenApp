@@ -2,6 +2,9 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:url_shorten/core/app_core.dart';
 import 'package:url_shorten/core/params/home_page_params.dart';
+import 'package:url_shorten/presentation/pages/favorite/bloc/favorite_bloc.dart';
+import 'package:url_shorten/presentation/pages/history/bloc/bloc.dart';
+import 'package:url_shorten/presentation/pages/settings/bloc/bloc.dart';
 import 'pages/home/bloc/home_bloc.dart';
 import 'pages/splash/splash.dart';
 
@@ -19,6 +22,18 @@ class MyApp extends StatelessWidget {
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(),
         ),
+        // favorite
+        BlocProvider(
+          create: (context) => FavoriteBloc(),
+        ),
+        // history
+        BlocProvider(
+          create: (context) => HistoryBloc(),
+        ),
+        // settings
+        BlocProvider(
+          create: (context) => SettingsBloc(),
+        )
       ],
       // create: (context) => SubjectBloc(),
       child: ThemeProvider(
