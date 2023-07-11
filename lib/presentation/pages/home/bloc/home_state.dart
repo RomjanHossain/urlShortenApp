@@ -35,28 +35,27 @@ class HomeInitial extends HomeState {
 
   // a text controller to control the text field.
   final TextEditingController urlController = TextEditingController();
+
+  // @override
+  // List<Object> get props => [
+  //       urlController.text,
+  //     ];
 }
 
 /// Settings Page
 class SettingPageState extends HomeState {
   /// {@macro home_initial}
   const SettingPageState() : super();
-
-  // int get index => 1;
 }
 
 /// History Page
 class HistoryPageState extends HomeState {
   /// {@macro home_initial}
   const HistoryPageState() : super();
-
-  // int get index => 2;
 }
 
 /// Favorite Page
 class FavoritePageState extends HomeState {
   /// {@macro home_initial}
   const FavoritePageState() : super();
-
-  // int get index => 3;
 }
