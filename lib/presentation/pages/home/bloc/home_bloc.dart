@@ -19,10 +19,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(const HomeInitial());
         break;
       case 1:
-        emit(const SettingPageState());
+        emit(const FavoritePageState());
         break;
       case 2:
         emit(const HistoryPageState());
+        break;
+      case 3:
+        emit(const SettingPageState());
         break;
       default:
         emit(const HomeInitial());
