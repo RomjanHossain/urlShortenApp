@@ -7,23 +7,21 @@ class HomeState extends Equatable {
   /// {@macro home_state}
   const HomeState({
     this.customProperty = 'Home Page',
-    this.index = 0,
   });
 
   /// A description for customProperty
   final String customProperty;
-  final int index;
   @override
-  List<Object> get props => [customProperty, index];
+  List<Object> get props => [
+        customProperty,
+      ];
 
   /// Creates a copy of the current HomeState with property changes
   HomeState copyWith({
     String? customProperty,
-    int? index,
   }) {
     return HomeState(
       customProperty: customProperty ?? this.customProperty,
-      index: index ?? this.index,
     );
   }
 }
@@ -33,9 +31,10 @@ class HomeState extends Equatable {
 /// {@endtemplate}
 class HomeInitial extends HomeState {
   /// {@macro home_initial}
-  const HomeInitial() : super();
+  HomeInitial() : super();
 
-  // int get index => 0;
+  // a text controller to control the text field.
+  final TextEditingController urlController = TextEditingController();
 }
 
 /// Settings Page

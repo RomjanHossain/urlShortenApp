@@ -1,13 +1,17 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_shorten/presentation/animations/page_transitions.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/view/viewshorturl_page.dart';
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(const HomeInitial()) {
+  HomeBloc() : super(HomeInitial()) {
     on<ChangePageEvent>(_onCustomHomeEvent);
+    on<GotoViewShortUrlPageEvent>(_onGotoViewShortUrlPageEvent);
   }
 
   FutureOr<void> _onCustomHomeEvent(
@@ -16,7 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) {
     switch (event.index) {
       case 0:
-        emit(const HomeInitial());
+        emit(HomeInitial());
         break;
       case 1:
         emit(const FavoritePageState());
@@ -28,7 +32,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(const SettingPageState());
         break;
       default:
-        emit(const HomeInitial());
+        emit(HomeInitial());
     }
+  }
+
+  FutureOr<void> _onGotoViewShortUrlPageEvent(event, emmit) async {
+    await Navigator.push(
+      event.context,
+      PageAnimationWrapper.sharedAxisTransitionPageWrapper(
+          const ViewshorturlPage()),
+    );
   }
 }
