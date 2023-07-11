@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class HomePageParams {
   /// Bottom Navigation radius
-  static const double bottomNavBorderRadius = 15;
+  static const double bottomNavCornerRaidus = 15;
 
   /// dark colorshceme
   static ThemeData darkTheme = FlexThemeData.dark(
