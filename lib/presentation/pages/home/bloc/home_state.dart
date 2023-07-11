@@ -53,3 +53,11 @@ class HistoryPageState extends HomeState {
 
   // int get index => 2;
 }
+
+/// Favorite Page
+class FavoritePageState extends HomeState {
+  /// {@macro home_initial}
+  const FavoritePageState() : super();
+
+  // int get index => 3;
+}
