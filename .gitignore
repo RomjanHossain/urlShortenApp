@@ -136,5 +136,4 @@ app.*.symbols
 
 
 # ignore the api_keys.dart file
-**/lib/core/params/api_keys.dart
 lib/core/params/api_keys.dart
