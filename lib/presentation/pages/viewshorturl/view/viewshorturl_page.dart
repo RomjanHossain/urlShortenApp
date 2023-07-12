@@ -19,6 +19,11 @@ class ViewshorturlPage extends StatelessWidget {
         title: const Text('View Short Url'),
       ),
       body: const ViewshorturlView(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text('Custom Shorten URL'),
+      ),
     );
   }
 }
