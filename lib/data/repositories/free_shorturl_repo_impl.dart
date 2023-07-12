@@ -14,11 +14,12 @@ class ShortUrlRepoImpl extends ShortUrlRepository {
       final Uri uri = Uri.parse('$shrtCoUrl?url=$url');
       final http.Response response = await http.get(uri);
       // check if the response is successful
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         final result = json.decode(response.body);
         final shrtcoEntities = ShrtcoEntity.fromJson(result['result']);
         return Success(shrtcoEntities);
       } else {
+        // print('oh no! 400 -> ${response.statusCode}\n${response.body}');
         return ServerFailor(Exception('Unable to get short url'));
       }
     } on Exception catch (e) {
