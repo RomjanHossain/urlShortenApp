@@ -24,10 +24,14 @@ class ShortenUrlButton extends StatelessWidget {
         } else {
           String url = textEditingController.text;
           if (HomePageParams.isURL(url)) {
+            /// Add the url to the bloc.
             context
                 .read<ViewshorturlBloc>()
                 .add(AddViewshorturlEvent(url: url));
 
+            /// chagne the state of ViewShortUrlPage to ViewShortUrlPageState.
+            /// This will change the page to ViewShortUrlPage.
+            context.read<ViewshorturlBloc>().add(GetShortUrlEvent(url: url));
             // if the url is not empty, add the ShortenUrlEvent to the bloc.
             context.read<HomeBloc>().add(
                   GotoViewShortUrlPageEvent(context
