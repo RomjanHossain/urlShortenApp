@@ -12,4 +12,7 @@ class PremiumApiResources {
 
   /// rebrandly
   static const String rebrandly = 'https://api.rebrandly.com/v1/links/new';
+
+  /// Tiny url
+  static const String goTiny = 'https://gotiny.cc/api';
 }
