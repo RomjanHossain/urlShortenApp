@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/bloc.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_card.dart';
 
 /// {@template viewshorturl_body}
 /// Body of the ViewshorturlPage.
@@ -18,12 +18,11 @@ class ViewshorturlBody extends StatelessWidget {
     return BlocBuilder<ViewshorturlBloc, ViewshorturlState>(
       builder: (context, state) {
         if (state is ViewshorturlInitial) {
-          // return Center(
-          //     child: Text(
-          //   state.url,
-          //   textAlign: TextAlign.center,
-          // ));
-          return const ShrtCoCard();
+          return Center(
+              child: Text(
+            state.url,
+            textAlign: TextAlign.center,
+          ));
         }
         if (state is ViewshorturlLoading) {
           // return const Center(child: CircularProgressIndicator());
@@ -57,148 +56,52 @@ class ViewshorturlBody extends StatelessWidget {
             itemCount: state.surls.length,
             itemBuilder: (context, index) {
               Object _data = state.surls[index];
-              if (_data.runtimeType is ShrtcoEntity) {
+              print(_data.runtimeType);
+              if (_data.runtimeType == ShrtcoEntity) {
                 _data = _data as ShrtcoEntity;
-                return Card(
-                  margin: const EdgeInsets.all(8),
-                  child: ListTile(
-                    title: Text(_data.code),
-                    subtitle: Text(_data.originalLink),
-                  ),
+
+                return ShrtCoCard(
+                  shrtcoEntity: _data,
                 );
               }
               return const Card(
                 margin: EdgeInsets.all(8),
                 child: ListTile(
-                  title: Text(''),
-                  subtitle: Text(''),
+                  title: Text('Nah'),
+                  subtitle: Text('Hah 2'),
                 ),
               )
                   .animate(
-                    onPlay: (controller) => controller.repeat(reverse: true),
+                    onPlay: (controller) => controller.repeat(),
                   )
                   .shimmer(
                     delay: 500.milliseconds,
                     angle: 2,
+                    color: Theme.of(context).colorScheme.secondary,
                     curve: Curves.easeIn,
                     duration: 800.milliseconds,
                   );
             },
           );
         }
-        return const Center(child: Text('Nothing to'));
+        if (state is ViewshorturlError) {
+          return Center(
+            child: Text(
+              state.message,
+              textAlign: TextAlign.center,
+            ),
+          );
+        }
+        if (state is ConnectionError) {
+          return const Center(
+            child: Text(
+              'No Internet Connection',
+              textAlign: TextAlign.center,
+            ),
+          );
+        }
+        return const Center(child: Text('Nothing to show'));
       },
-    );
-  }
-}
-
-class ShrtCoCard extends StatelessWidget {
-  const ShrtCoCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8),
-      child: ListTile(
-        title: const Text('ShrtCo'),
-        subtitle: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Card(
-              color: Theme.of(context).colorScheme.tertiary,
-              child: ListTile(
-                title: const Text("shrtco.de/hu3pp4"),
-                trailing: IconButton(
-                  onPressed: () {
-                    Clipboard.setData(const ClipboardData(text: "your text"));
-
-                    /// show a snackbar
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Copied to Clipboard'),
-                        duration: Duration(seconds: 1),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.copy),
-                  padding: const EdgeInsets.all(0),
-                  constraints: const BoxConstraints(
-                    minWidth: 0,
-                    minHeight: 0,
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              color: Theme.of(context).colorScheme.tertiary,
-              child: ListTile(
-                title: const Text("shrtco.de/hu3pp4"),
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.copy),
-                  padding: const EdgeInsets.all(0),
-                  constraints: const BoxConstraints(
-                    minWidth: 0,
-                    minHeight: 0,
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              color: Theme.of(context).colorScheme.tertiary,
-              child: ListTile(
-                title: const Text("shrtco.de/hu3pp4"),
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.copy),
-                  // alignment: Alignment.centerRight,
-                  padding: const EdgeInsets.all(0),
-                  constraints: const BoxConstraints(
-                    minWidth: 0,
-                    minHeight: 0,
-                  ),
-                ),
-              ),
-            ),
-
-            // original link
-            const Text(
-              'Original Link:',
-              textAlign: TextAlign.left,
-            ),
-            Card(
-              color: Theme.of(context).colorScheme.tertiary,
-              child: Stack(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "https://www.youtube.com/watch?v=AOzy44b2gko",
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.copy),
-                        padding: const EdgeInsets.all(0),
-                        constraints: const BoxConstraints(
-                          minWidth: 0,
-                          minHeight: 0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
