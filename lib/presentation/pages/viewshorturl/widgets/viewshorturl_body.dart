@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:url_shorten/domain/entities/cleanuri_entities.dart';
+import 'package:url_shorten/domain/entities/error_entities.dart';
+import 'package:url_shorten/domain/entities/gotiny_entities.dart';
 import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_card.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_small_card.dart';
 
 /// {@template viewshorturl_body}
 /// Body of the ViewshorturlPage.
@@ -39,11 +43,12 @@ class ViewshorturlBody extends StatelessWidget {
                   ),
                 )
                     .animate(
-                      onPlay: (controller) => controller.repeat(reverse: true),
+                      onPlay: (controller) => controller.repeat(),
                     )
                     .shimmer(
                       delay: 500.milliseconds,
                       angle: 2,
+                      color: Theme.of(context).colorScheme.secondary,
                       curve: Curves.easeIn,
                       duration: 800.milliseconds,
                     ),
@@ -62,6 +67,24 @@ class ViewshorturlBody extends StatelessWidget {
 
                 return ShrtCoCard(
                   shrtcoEntity: _data,
+                );
+              }
+              if (_data.runtimeType == CleanUriEntities) {
+                _data = _data as CleanUriEntities;
+                return Card(
+                  child: ListTile(
+                    title: const Text('CleanUri'),
+                    subtitle: ShrtcoSmllCard(txt: _data.resultUrl),
+                  ),
+                );
+              }
+              if (_data.runtimeType == GotinyEntity) {
+                _data = _data as GotinyEntity;
+                return Card(
+                  child: ListTile(
+                    title: const Text('Gotiny'),
+                    subtitle: ShrtcoSmllCard(txt: 'gotiny.cc/${_data.code}'),
+                  ),
                 );
               }
               return const Card(
