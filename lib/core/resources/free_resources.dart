@@ -3,7 +3,7 @@ class FreeApiResources {
   /// SHRT.CO url
   static const String shrtCo = 'https://api.shrtco.de/v2/shorten';
 
-  /// Tiny url
+  /// gotiny
   static const String goTiny = 'https://gotiny.cc/api';
 
   /// cleanUri
