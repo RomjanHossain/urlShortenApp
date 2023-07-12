@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/error/api_errors.dart';
@@ -25,6 +25,15 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
 
   /// calling the free apis
   FutureOr<void> _onFreeApiCall(event, emit) async {
+    /// check internet connection
+
+    final connectivityResult = await (Connectivity().checkConnectivity());
+
+    /// if no internet connection
+    if (connectivityResult == ConnectivityResult.none) {
+      emit(const ConnectionError());
+      return;
+    }
     ShrtCOUrlUseCase shrtCOUrlUseCase = ShrtCOUrlUseCase();
     emit(const ViewshorturlLoading());
     final result = await shrtCOUrlUseCase.getShortUrl(event.url);
