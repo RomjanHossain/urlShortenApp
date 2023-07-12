@@ -16,3 +16,27 @@ class AddViewshorturlEvent extends ViewshorturlEvent {
   // get url from user
   final String url;
 }
+
+/// call free api to get short url
+class GetShortUrlEvent extends ViewshorturlEvent {
+  /// {@macro custom_viewshorturl_event}
+  const GetShortUrlEvent({required this.url});
+
+  // get url from user
+  final String url;
+}
+
+/// call premium api to get short url
+class GetPremiumShortUrlEvent extends ViewshorturlEvent {
+  /// {@macro custom_viewshorturl_event}
+  const GetPremiumShortUrlEvent({
+    required this.url,
+    required this.custom,
+  });
+
+  // get url from user
+  final String url;
+
+  /// custom
+  final String custom;
+}
