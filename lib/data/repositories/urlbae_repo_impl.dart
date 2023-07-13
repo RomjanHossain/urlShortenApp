@@ -29,8 +29,12 @@ class UrlBaeRepoImpl extends UrlBaeRepository {
       // check if the response is successful
       if (response.statusCode == 200) {
         final result = json.decode(response.body);
-        final urlBaeEntity = UrlBaeEntity.fromJson(result[0]);
-        return Success(urlBaeEntity);
+        try {
+          final urlBaeEntity = UrlBaeEntity.fromJson(result);
+          return Success(urlBaeEntity);
+        } on Exception catch (e) {
+          return ServerFailor(e);
+        }
       } else {
         // print('oh no! 400 -> ${response.statusCode}\n${response.body}');
         return ServerFailor(Exception('Unable to get short url'));
