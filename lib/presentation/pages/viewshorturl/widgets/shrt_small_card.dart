@@ -15,7 +15,10 @@ class ShrtcoSmllCard extends StatelessWidget {
     return Card(
       color: Theme.of(context).colorScheme.tertiary,
       child: ListTile(
-        title: Text(txt),
+        title: Text(
+          txt,
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
         trailing: CopyIconBtn(txt: txt),
       ),
     );

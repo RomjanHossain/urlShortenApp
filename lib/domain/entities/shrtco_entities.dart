@@ -1,21 +1,3 @@
-/*
-{
-    "ok": true,
-    "result": {
-        "code": "hu3pp4",
-        "short_link": "shrtco.de/hu3pp4",
-        "full_short_link": "https://shrtco.de/hu3pp4",
-        "short_link2": "9qr.de/hu3pp4",
-        "full_short_link2": "https://9qr.de/hu3pp4",
-        "short_link3": "shiny.link/hu3pp4",
-        "full_short_link3": "https://shiny.link/hu3pp4",
-        "share_link": "shrtco.de/share/hu3pp4",
-        "full_share_link": "https://shrtco.de/share/hu3pp4",
-        "original_link": "https://www.youtube.com/watch?v=AOzy44b2gko"
-    }
-}
-*/
-
 import 'package:equatable/equatable.dart';
 
 /// ShrtcoEntity
