@@ -1,5 +1,11 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/widgets/custom_alert_dialog.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/viewshorturl_body.dart';
+import 'package:url_shorten/presentation/pages/viewshorturlpr/view/viewshorturlpr_page.dart';
 
 /// A description for ViewshorturlPage
 
@@ -20,9 +26,48 @@ class ViewshorturlPage extends StatelessWidget {
       ),
       body: const ViewshorturlView(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('Custom Shorten URL'),
+      floatingActionButton: OpenContainer(
+        closedBuilder: (context, openBuilder) {
+          return FloatingActionButton.extended(
+            onPressed: () async {
+              var _homeState = context.read<HomeBloc>().state;
+              if (_homeState is HomeInitial) {
+                // print('current home state ${_homeState.urlController.text}');
+                /// a dialog box and a text field for custom url
+                await showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return CustomAlertDialog(
+                      onPressed: openBuilder,
+                      originURL: _homeState.urlController.text,
+                    );
+                  },
+                );
+              }
+            },
+            label: const Text('Custom Alias Shorten URL'),
+          );
+        },
+        openShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(5),
+          ),
+        ),
+        closedShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
+        ),
+        closedColor: Theme.of(context).colorScheme.primaryContainer.withOpacity(
+              0.3,
+            ),
+        openColor: Theme.of(context).colorScheme.primaryContainer,
+        closedElevation: 0,
+        middleColor: Theme.of(context).colorScheme.primaryContainer,
+        transitionDuration: 800.milliseconds,
+        openBuilder: (context, closeBuilder) {
+          return const ViewshorturlprPage();
+        },
       ),
     );
   }

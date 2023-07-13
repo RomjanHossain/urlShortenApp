@@ -25,18 +25,3 @@ class GetShortUrlEvent extends ViewshorturlEvent {
   // get url from user
   final String url;
 }
-
-/// call premium api to get short url
-class GetPremiumShortUrlEvent extends ViewshorturlEvent {
-  /// {@macro custom_viewshorturl_event}
-  const GetPremiumShortUrlEvent({
-    required this.url,
-    required this.custom,
-  });
-
-  // get url from user
-  final String url;
-
-  /// custom
-  final String custom;
-}
