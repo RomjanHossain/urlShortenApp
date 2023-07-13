@@ -11,7 +11,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
+      builder: (BuildContext context, state) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
