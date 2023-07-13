@@ -13,7 +13,7 @@ class ShrtcoSmllCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.tertiary,
+      color: Theme.of(context).colorScheme.tertiaryContainer,
       child: ListTile(
         title: Text(
           txt,

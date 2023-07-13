@@ -3,7 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/error/api_errors.dart';
-import 'package:url_shorten/core/error/api_erros_msg.dart';
+import 'package:url_shorten/core/error/exception_msg.dart';
 import 'package:url_shorten/domain/entities/error_entities.dart';
 import 'package:url_shorten/domain/usecases/cleanuri_usecase.dart';
 import 'package:url_shorten/domain/usecases/gotiny_usecase.dart';
@@ -144,18 +144,5 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
 
     /// emit the sucess state
     emit(ViewshorturlSuccess(freeShortUrls));
-  }
-
-  /// get error message
-  String getExceptionMsg(Exception exception) {
-    if (exception is ServerFailor) {
-      return serverFailorMsg;
-    } else if (exception is RateLimitFailor) {
-      return rateLimitMsg;
-    } else if (exception is IpBlockFailor) {
-      return ipBlockMsg;
-    } else {
-      return unknownErrorMsg;
-    }
   }
 }
