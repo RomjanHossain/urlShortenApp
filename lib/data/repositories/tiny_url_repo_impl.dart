@@ -26,8 +26,8 @@ class TinyUrlRepoImpl extends TinyURLRepository {
       // check if the response is successful
       if (response.statusCode == 200) {
         final result = json.decode(response.body);
-        final urlBaeEntity = TinyUrlEntities.fromJson(result);
-        return Success(urlBaeEntity);
+        final tinyUrlEntity = TinyUrlEntities.fromJson(result);
+        return Success(tinyUrlEntity);
       } else {
         // print('oh no! 400 -> ${response.statusCode}\n${response.body}');
         return ServerFailor(Exception('Unable to get short url'));
