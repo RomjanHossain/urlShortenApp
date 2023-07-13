@@ -8,5 +8,8 @@ class FreeApiResources {
 
   /// cleanUri
   static const String cleanUri = 'https://cleanuri.com/api/v1/shorten';
-  // static const String ulVis = 'https://ulvis.net/API/write/get'; # CUSTOM DOMAIN
+
+  /// ulvis
+  static const String ulVis =
+      'https://ulvis.net/API/write/get'; // CUSTOM DOMAIN
 }
