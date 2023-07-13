@@ -1,9 +1,13 @@
 class UrlBaeEntity {
   UrlBaeEntity({
-    required String id,
-    required String shortUrl,
-    required String? error,
+    required this.id,
+    required this.shortUrl,
+    required this.error,
   });
+
+  final String? id;
+  final String? shortUrl;
+  final int? error;
 
   factory UrlBaeEntity.fromJson(Map<String, dynamic> json) {
     return UrlBaeEntity(
