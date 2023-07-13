@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/error/api_erros_msg.dart';
 import 'package:url_shorten/domain/entities/error_entities.dart';
-import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/domain/usecases/cleanuri_usecase.dart';
 import 'package:url_shorten/domain/usecases/gotiny_usecase.dart';
 import 'package:url_shorten/domain/usecases/shrtco_usecase.dart';
+import 'package:url_shorten/domain/usecases/ulvis_usecase.dart';
 part 'viewshorturl_event.dart';
 part 'viewshorturl_state.dart';
 
@@ -46,50 +46,101 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
     ///! shrtco api
     ShrtCOUrlUseCase shrtCOUrlUseCase = ShrtCOUrlUseCase();
     final shrtcoResult = await shrtCOUrlUseCase.getShortUrl(event.url);
-    final shrtcoValue = switch (shrtcoResult) {
-      Success(data: final shrtcoEntity) => freeShortUrls.add(shrtcoEntity),
-      ServerFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      RateLimitFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      IpBlockFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-    };
+
+    switch (shrtcoResult) {
+      case Success(data: final shrtcoEntity):
+        freeShortUrls.add(shrtcoEntity);
+        break;
+      case ServerFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+        break;
+      case RateLimitFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+        break;
+      case IpBlockFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
 
     /// cleanuri api
     CleanUriUseCase cleanUriUseCase = CleanUriUseCase();
     final cleanUriresult = await cleanUriUseCase.getShortUrl(event.url);
-    final cleanUriValue = switch (cleanUriresult) {
-      Success(data: final shrtcoEntity) => freeShortUrls.add(shrtcoEntity),
-      ServerFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'CleanUri')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      RateLimitFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'CleanUri')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      IpBlockFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'CleanUri')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-    };
+
+    switch (cleanUriresult) {
+      case Success(data: final cleanUriEntity):
+        freeShortUrls.add(cleanUriEntity);
+        break;
+      case ServerFailor(error: final exception):
+        freeShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        break;
+      case RateLimitFailor(error: final exception):
+        freeShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        break;
+      case IpBlockFailor(error: final exception):
+        freeShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
 
     /// gotiny api
     GotinyUseCase gotinyUseCase = GotinyUseCase();
     final gotinyresult = await gotinyUseCase.getShortUrl(event.url);
-    final gotinyValue = switch (gotinyresult) {
-      Success(data: final shrtcoEntity) => freeShortUrls.add(shrtcoEntity),
-      ServerFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      RateLimitFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-      IpBlockFailor(error: final exception) => freeShortUrls.add(
-          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny')),
-      // emit(ViewshorturlError(getExceptionMsg(exception))),
-    };
+
+    switch (gotinyresult) {
+      case Success(data: final gotinyEntity):
+        freeShortUrls.add(gotinyEntity);
+        break;
+      case ServerFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+        break;
+      case RateLimitFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+        break;
+      case IpBlockFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
+
+    /// ulvis api
+    UlvisUseCase ulvisUseCase = UlvisUseCase();
+    final ulvisresult = await ulvisUseCase.getShortUrl(event.url);
+    switch (ulvisresult) {
+      case Success(data: final ulvisEntity):
+        freeShortUrls.add(ulvisEntity);
+        break;
+      case ServerFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+        break;
+      case RateLimitFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+        break;
+      case IpBlockFailor(error: final exception):
+        freeShortUrls.add(
+            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
 
     /// emit the sucess state
     emit(ViewshorturlSuccess(freeShortUrls));
