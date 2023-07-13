@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/resources/free_resources.dart';
-import 'package:url_shorten/domain/entities/cleanuri_entities.dart';
 import 'package:url_shorten/domain/entities/gotiny_entities.dart';
-import 'package:url_shorten/domain/repositories/cleanuri_repo.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_shorten/domain/repositories/gotiny_repo.dart';
 
