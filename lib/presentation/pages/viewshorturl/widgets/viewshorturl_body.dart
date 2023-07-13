@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/bloc.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/loading_listview.dart';
+import 'package:url_shorten/presentation/widgets/loading_listview.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shorturl_card_listview.dart';
 
 /// {@template viewshorturl_body}
