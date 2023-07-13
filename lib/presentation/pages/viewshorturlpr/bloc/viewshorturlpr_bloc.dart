@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/error/exception_msg.dart';
 import 'package:url_shorten/domain/entities/error_entities.dart';
+import 'package:url_shorten/domain/usecases/rebrandly_usecase.dart';
 import 'package:url_shorten/domain/usecases/tinyurl_usecase.dart';
 import 'package:url_shorten/domain/usecases/ulvis_usecase.dart';
 import 'package:url_shorten/domain/usecases/urlbae_usecase.dart';
@@ -110,6 +111,31 @@ class ViewshorturlprBloc
       case IpBlockFailor(error: final exception):
         premiumShortUrls.add(
             ErrorModel(message: getExceptionMsg(exception), domain: 'TinyUrl'));
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
+
+    /// rebrandly api
+    RebrandlyUseCase rebrandlyUseCase = RebrandlyUseCase();
+    final rebrandlyResult =
+        await rebrandlyUseCase.getShortUrl(event.url, event.custom);
+    switch (rebrandlyResult) {
+      case Success(data: final rebrandlyEntity):
+        premiumShortUrls.add(rebrandlyEntity);
+        break;
+      case ServerFailor(error: final exception):
+        premiumShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'Rebrandly'));
+        break;
+      case RateLimitFailor(error: final exception):
+        premiumShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'Rebrandly'));
+        break;
+      case IpBlockFailor(error: final exception):
+        premiumShortUrls.add(ErrorModel(
+            message: getExceptionMsg(exception), domain: 'Rebrandly'));
         break;
       default:
         // Handle other cases if needed
