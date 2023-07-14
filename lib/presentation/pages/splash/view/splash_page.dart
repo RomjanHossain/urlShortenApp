@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_shorten/core/params/history_page_params.dart';
+import 'package:url_shorten/presentation/pages/history/bloc/history_bloc.dart';
 import 'package:url_shorten/presentation/pages/splash/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/splash/widgets/splash_body.dart';
 
@@ -34,6 +36,9 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<HistoryBloc>()
+        .add(const ChangeSegmentBtnE(HistorySegmentButtonEnum.shorturl));
     return const SplashBody();
   }
 }
