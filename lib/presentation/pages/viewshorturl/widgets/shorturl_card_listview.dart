@@ -25,7 +25,7 @@ class ShortUrlCardListView extends StatelessWidget {
       itemCount: state.furls.length + 1,
       itemBuilder: (context, index) {
         if (index == state.furls.length) {
-          var _homeState = context.read<HomeBloc>().state;
+          var homeState = context.read<HomeBloc>().state;
           return Column(
             children: [
               const Divider(
@@ -36,8 +36,8 @@ class ShortUrlCardListView extends StatelessWidget {
                 child: ListTile(
                   title: const Text('Original Link'),
                   subtitle: ShrtcoSmllCard(
-                    txt: _homeState is HomeInitial
-                        ? _homeState.urlController.text
+                    txt: homeState is HomeInitial
+                        ? homeState.urlController.text
                         : '',
                   ),
                 ),
