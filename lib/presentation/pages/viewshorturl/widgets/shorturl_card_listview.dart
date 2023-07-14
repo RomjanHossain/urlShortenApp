@@ -8,7 +8,7 @@ import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/domain/entities/ulvis_entities.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/viewshorturl_bloc.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_card.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/components/shrt_card.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_small_card.dart';
 
 class ShortUrlCardListView extends StatelessWidget {
