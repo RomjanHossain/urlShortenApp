@@ -4,10 +4,14 @@ import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/params/api_keys.dart';
 import 'package:url_shorten/core/resources/pr_resources.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_shorten/data/datasources/local/shorturl_db_impl.dart';
+import 'package:url_shorten/data/models/shorturl_container_db_model.dart';
 import 'package:url_shorten/domain/entities/urlbae_entities.dart';
 import 'package:url_shorten/domain/repositories/urlbae_repo.dart';
 
 class UrlBaeRepoImpl extends UrlBaeRepository {
+  ShortDBImplementation shortDBImplementation = ShortDBImplementation();
+
   @override
   Future<Result<UrlBaeEntity, Exception>> shortUrl(
       String url, String custom) async {
@@ -31,6 +35,16 @@ class UrlBaeRepoImpl extends UrlBaeRepository {
         final result = json.decode(response.body);
         try {
           final urlBaeEntity = UrlBaeEntity.fromJson(result);
+
+          ///! Saving the db to local storage
+          final shortUrlContainerDBModel = ShortUrlContainerDBModel()
+            ..domain = 'Urlbae'
+            ..originalLink = url
+            ..isAlias = true
+            ..shortLink = urlBaeEntity.shortUrl;
+          shortDBImplementation.insertShortUrl(shortUrlContainerDBModel);
+
+          ///! End
           return Success(urlBaeEntity);
         } on Exception catch (e) {
           return ServerFailor(e);
