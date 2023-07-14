@@ -5,7 +5,7 @@ class RebrandlyEntities {
   final String destination;
   final String createdAt;
   final String updatedAt;
-  final String expiredAt;
+  final String? expiredAt;
   final String status;
   final List<dynamic> tags;
   final int clicks;
