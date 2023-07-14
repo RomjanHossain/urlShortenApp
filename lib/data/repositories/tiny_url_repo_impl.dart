@@ -14,14 +14,18 @@ class TinyUrlRepoImpl extends TinyURLRepository {
     const String tinyUrl = PremiumApiResources.tinyUrl;
     try {
       final Uri uri = Uri.parse('$tinyUrl?api_token=${ApiKeys.tinyUrlToken}');
-
+      final Map<String, String> requestBody = {
+        'url': url,
+        'alias': custom,
+      };
+      final headers = {'Content-Type': 'application/json'};
       // final http.Response response = await http.post(uri, body: {'url': url});
       /// a post method where the url is passed as a body and header will be content-type application/json
-      final http.Response response = await http.post(uri,
-          body: jsonEncode(<String, String>{
-            'url': url,
-            'alias': custom,
-          }));
+      final http.Response response = await http.post(
+        uri,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
 
       // check if the response is successful
       if (response.statusCode == 200) {
@@ -29,7 +33,6 @@ class TinyUrlRepoImpl extends TinyURLRepository {
         final tinyUrlEntity = TinyUrlEntities.fromJson(result);
         return Success(tinyUrlEntity);
       } else {
-        // print('oh no! 400 -> ${response.statusCode}\n${response.body}');
         return ServerFailor(Exception('Unable to get short url'));
       }
     } on Exception catch (e) {
