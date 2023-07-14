@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/copy_icon_button.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/components/copy_icon_button.dart';
 
 class ShrtcoSmllCard extends StatelessWidget {
   const ShrtcoSmllCard({
