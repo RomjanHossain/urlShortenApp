@@ -30,8 +30,8 @@ class ViewshorturlPage extends StatelessWidget {
         closedBuilder: (context, openBuilder) {
           return FloatingActionButton.extended(
             onPressed: () async {
-              var _homeState = context.read<HomeBloc>().state;
-              if (_homeState is HomeInitial) {
+              var homeState = context.read<HomeBloc>().state;
+              if (homeState is HomeInitial) {
                 // print('current home state ${_homeState.urlController.text}');
                 /// a dialog box and a text field for custom url
                 await showDialog(
@@ -39,7 +39,7 @@ class ViewshorturlPage extends StatelessWidget {
                   builder: (BuildContext context) {
                     return CustomAlertDialog(
                       onPressed: openBuilder,
-                      originURL: _homeState.urlController.text,
+                      originURL: homeState.urlController.text,
                     );
                   },
                 );
