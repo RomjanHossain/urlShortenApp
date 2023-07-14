@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/domain/entities/cleanuri_entities.dart';
+import 'package:url_shorten/domain/entities/error_entities.dart';
 import 'package:url_shorten/domain/entities/gotiny_entities.dart';
 import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/domain/entities/ulvis_entities.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/viewshorturl_bloc.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/copy_icon_button.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_card.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_small_card.dart';
 
@@ -47,6 +47,16 @@ class ShortUrlCardListView extends StatelessWidget {
           );
         }
         Object data = state.furls[index];
+        if (data.runtimeType == ErrorModel) {
+          data = data as ErrorModel;
+
+          return Card(
+            child: ListTile(
+              title: Text('Errors ${data.domain}'),
+              subtitle: ShrtcoSmllCard(txt: data.message),
+            ),
+          );
+        }
         if (data.runtimeType == ShrtcoEntity) {
           data = data as ShrtcoEntity;
           return ShrtCoCard(
