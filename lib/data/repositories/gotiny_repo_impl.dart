@@ -2,11 +2,15 @@ import 'dart:convert';
 
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/resources/free_resources.dart';
+import 'package:url_shorten/data/datasources/local/shorturl_db_impl.dart';
+import 'package:url_shorten/data/models/shorturl_container_db_model.dart';
 import 'package:url_shorten/domain/entities/gotiny_entities.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_shorten/domain/repositories/gotiny_repo.dart';
 
 class GotinyRepoImpl extends GotinyRepository {
+  ShortDBImplementation shortDBImplementation = ShortDBImplementation();
+
   @override
   Future<Result<GotinyEntity, Exception>> shortUrl(String url) async {
     const String gotiny = FreeApiResources.goTiny;
@@ -23,6 +27,15 @@ class GotinyRepoImpl extends GotinyRepository {
       if (response.statusCode == 200) {
         final result = json.decode(response.body);
         final gotinyEntity = GotinyEntity.fromJson(result[0]);
+
+        ///! Saving the db to local storage
+        final shortUrlContainerDBModel = ShortUrlContainerDBModel()
+          ..domain = 'GoTiny'
+          ..originalLink = url
+          ..shortLink = 'gotiny.cc/${gotinyEntity.code}';
+        shortDBImplementation.insertShortUrl(shortUrlContainerDBModel);
+
+        ///! End
         return Success(gotinyEntity);
       } else {
         // print('oh no! 400 -> ${response.statusCode}\n${response.body}');

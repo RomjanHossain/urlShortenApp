@@ -3,12 +3,16 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/resources/pr_resources.dart';
+import 'package:url_shorten/data/datasources/local/shorturl_db_impl.dart';
+import 'package:url_shorten/data/models/shorturl_container_db_model.dart';
 import 'package:url_shorten/domain/entities/rebrandly_entities.dart';
 import 'package:url_shorten/domain/repositories/rebrandly_repo.dart';
 
 import '../../core/params/api_keys.dart';
 
 class RebrandlyRepoImp extends RebrandlyRepository {
+  ShortDBImplementation shortDBImplementation = ShortDBImplementation();
+
   @override
   Future<Result<RebrandlyEntities, Exception>> shortUrl(
       String url, String custom) async {
@@ -25,17 +29,22 @@ class RebrandlyRepoImp extends RebrandlyRepository {
           'apiKey': ApiKeys.rebrandlyToken,
           'Content-Type': 'application/json'
         },
-        // body: jsonEncode({
-        //   'destination': url,
-        //   // 'slashtag': custom,
-        // }),
       );
 
       // check if the response is successful
       if (response.statusCode == 200) {
-        print('200 -> ${response.statusCode}\n${response.body}');
         final result = json.decode(response.body);
         final rebrandlyEntity = RebrandlyEntities.fromJson(result);
+
+        ///! Saving the db to local storage
+        final shortUrlContainerDBModel = ShortUrlContainerDBModel()
+          ..domain = 'Rebrandly'
+          ..originalLink = url
+          ..isAlias = true
+          ..shortLink = rebrandlyEntity.shortUrl;
+        shortDBImplementation.insertShortUrl(shortUrlContainerDBModel);
+
+        ///! End
         return Success(rebrandlyEntity);
       } else {
         print('oh no! 400 -> ${response.statusCode}\n${response.body}');
