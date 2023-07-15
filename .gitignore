@@ -139,3 +139,5 @@ app.*.symbols
 lib/core/params/api_keys.dart
 lib/data/models/shorturl_container_db_model.g.dart
 lib/data/models/shrtco_db_model.g.dart
+lib/data/models/shorturl_container_fav_db_model.g.dart
+lib/data/models/shrtco_fav_db_model.g.dart
