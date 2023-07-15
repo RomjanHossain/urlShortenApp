@@ -8,7 +8,7 @@ import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/domain/entities/ulvis_entities.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/viewshorturl_bloc.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_card.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/components/shrt_card.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_small_card.dart';
 
 class ShortUrlCardListView extends StatelessWidget {
@@ -25,7 +25,7 @@ class ShortUrlCardListView extends StatelessWidget {
       itemCount: state.furls.length + 1,
       itemBuilder: (context, index) {
         if (index == state.furls.length) {
-          var _homeState = context.read<HomeBloc>().state;
+          var homeState = context.read<HomeBloc>().state;
           return Column(
             children: [
               const Divider(
@@ -36,8 +36,8 @@ class ShortUrlCardListView extends StatelessWidget {
                 child: ListTile(
                   title: const Text('Original Link'),
                   subtitle: ShrtcoSmllCard(
-                    txt: _homeState is HomeInitial
-                        ? _homeState.urlController.text
+                    txt: homeState is HomeInitial
+                        ? homeState.urlController.text
                         : '',
                   ),
                 ),

@@ -137,3 +137,5 @@ app.*.symbols
 
 # ignore the api_keys.dart file
 lib/core/params/api_keys.dart
+lib/data/models/shorturl_container_db_model.g.dart
+lib/data/models/shrtco_db_model.g.dart

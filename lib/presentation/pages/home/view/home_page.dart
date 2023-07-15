@@ -20,6 +20,16 @@ class HomePage extends StatelessWidget {
     HomeState state = context.watch<HomeBloc>().state;
     return ThemeSwitchingArea(
       child: Scaffold(
+        appBar: state is HomeInitial
+            ? null
+            : AppBar(
+                automaticallyImplyLeading: false,
+                title: Text(state is FavoritePageState
+                    ? 'Favorite'
+                    : state is HistoryPageState
+                        ? 'History'
+                        : 'Settings'),
+              ),
         body: state is HomeInitial
             ? const HomeView()
             : state is FavoritePageState

@@ -51,7 +51,7 @@ class ShortUrlCardListViewPr extends StatelessWidget {
           return Card(
             child: ListTile(
               title: const Text('TinyUrl'),
-              subtitle: ShrtcoSmllCard(txt: data.data?.url ?? ""),
+              subtitle: ShrtcoSmllCard(txt: data.data?.tinyUrl ?? ""),
             ),
           );
         }
