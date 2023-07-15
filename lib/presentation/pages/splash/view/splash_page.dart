@@ -36,9 +36,6 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<HistoryBloc>()
-        .add(const ChangeSegmentBtnE(HistorySegmentButtonEnum.shorturl));
     return const SplashBody();
   }
 }
