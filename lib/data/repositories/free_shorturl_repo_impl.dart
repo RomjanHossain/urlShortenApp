@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/resources/free_resources.dart';
-import 'package:url_shorten/data/datasources/local/shrtco_db_impl.dart';
+import 'package:url_shorten/data/datasources/local/shorturl_db_impl.dart';
 import 'package:url_shorten/domain/entities/shrtco_entities.dart';
 import 'package:url_shorten/domain/repositories/free_shorturl_repo.dart';
 import 'package:http/http.dart' as http;
@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 import '../models/shrtco_db_model.dart';
 
 class ShortUrlRepoImpl extends ShortUrlRepository {
-  ShrtCoDBImplementation shrtDbImpl = ShrtCoDBImplementation();
+  ShortDBImplementation shrtDbImpl = ShortDBImplementation();
 
   @override
   Future<Result<ShrtcoEntity, Exception>> freeShortUrl(String url) async {
@@ -29,7 +29,7 @@ class ShortUrlRepoImpl extends ShortUrlRepository {
           ..shrtLink1 = shrtcoEntities.shortLink
           ..shrtLink2 = shrtcoEntities.shortLink2
           ..shrtLink3 = shrtcoEntities.shortLink3;
-        shrtDbImpl.insertShortUrl(shrtDBmod);
+        shrtDbImpl.insertShrCotUrl(shrtDBmod);
 
         ///! End
         return Success(shrtcoEntities);

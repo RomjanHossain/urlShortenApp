@@ -22,8 +22,8 @@ class HomeFloatingActionBtn extends StatelessWidget {
           ),
           child: Icon(
             theme.brightness == Brightness.light
-                ? Icons.brightness_2_outlined
-                : Icons.brightness_5_outlined,
+                ? Icons.brightness_low_rounded
+                : Icons.brightness_high_rounded,
           ),
         );
       },

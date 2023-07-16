@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
-import 'package:url_shorten/presentation/pages/viewshorturl/widgets/custom_alert_dialog.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/components/custom_alert_dialog.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/viewshorturl_body.dart';
 import 'package:url_shorten/presentation/pages/viewshorturlpr/view/viewshorturlpr_page.dart';
 

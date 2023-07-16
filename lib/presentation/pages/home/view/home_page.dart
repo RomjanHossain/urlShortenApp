@@ -4,8 +4,8 @@ import 'package:url_shorten/presentation/pages/favorite/favorite.dart';
 import 'package:url_shorten/presentation/pages/history/history.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
 import 'package:url_shorten/presentation/pages/home/widgets/home_body.dart';
-import 'package:url_shorten/presentation/pages/home/widgets/home_fab.dart';
-import 'package:url_shorten/presentation/pages/home/widgets/home_navbar.dart';
+import 'package:url_shorten/presentation/pages/home/components/home_fab.dart';
+import 'package:url_shorten/presentation/pages/home/components/home_navbar.dart';
 import 'package:url_shorten/presentation/pages/settings/settings.dart';
 
 /// {@template home_page}

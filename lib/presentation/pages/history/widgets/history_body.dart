@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:url_shorten/core/params/history_page_params.dart';
 import 'package:url_shorten/data/models/shorturl_container_db_model.dart';
+import 'package:url_shorten/data/models/shrtco_db_model.dart';
 import 'package:url_shorten/presentation/pages/history/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/history/components/history_card_comp.dart';
+import 'package:url_shorten/presentation/pages/history/components/history_card_shrtco_comp.dart';
 
 /// {@template history_body}
 /// Body of the HistoryPage.
@@ -51,6 +52,14 @@ class HistoryBody extends StatelessWidget {
                   in state.shortUrlsFree)
                 HistoryCard(
                   shortUrlModel: shortUrlModel,
+                ),
+              for (ShrtcoDBModel shortUrlModel in state.shrtCoUrlFree)
+                Visibility(
+                  visible: state.segmentButtonEnum ==
+                      HistorySegmentButtonEnum.shorturl,
+                  child: HistoryShrtCoCard(
+                    shrtCoUrlModel: shortUrlModel,
+                  ),
                 )
             ]
           ],
