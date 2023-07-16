@@ -15,8 +15,8 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   HistoryBloc()
       : super(HistoryInitial(
             segmentButtonEnum: HistorySegmentButtonEnum.shorturl,
-            shortUrlsFree: [],
-            shrtCoUrlFree: [])) {
+            shortUrlsFree: const [],
+            shrtCoUrlFree: const [])) {
     on<ChangeSegmentBtnE>(_onCustomHistoryEvent);
   }
 
