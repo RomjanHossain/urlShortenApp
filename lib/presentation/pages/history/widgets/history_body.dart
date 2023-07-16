@@ -20,49 +20,52 @@ class HistoryBody extends StatelessWidget {
     return BlocConsumer<HistoryBloc, HistoryState>(
       listener: (context, state) {},
       builder: (context, state) {
-        return ListView(
-          children: [
-            /// segment button
+        return ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: ListView(
+            children: [
+              /// segment button
 
-            if (state is HistoryInitial) ...[
-              Center(
-                child: SegmentedButton(
-                    segments: const <ButtonSegment<HistorySegmentButtonEnum>>[
-                      ButtonSegment(
-                        label: Text('Short URL'),
-                        value: HistorySegmentButtonEnum.shorturl,
-                      ),
-                      ButtonSegment(
-                        label: Text('Alias URL'),
-                        value: HistorySegmentButtonEnum.aliasurl,
-                      ),
-                    ],
-                    selected: <HistorySegmentButtonEnum>{
-                      state.segmentButtonEnum
-                    },
-                    onSelectionChanged:
-                        (Set<HistorySegmentButtonEnum> newSelection) {
-                      context
-                          .read<HistoryBloc>()
-                          .add(ChangeSegmentBtnE(newSelection.first));
-                    }),
-                // state.shortUrlsFree.forEach((element) { })
-              ),
-              for (ShortUrlContainerDBModel shortUrlModel
-                  in state.shortUrlsFree)
-                HistoryCard(
-                  shortUrlModel: shortUrlModel,
+              if (state is HistoryInitial) ...[
+                Center(
+                  child: SegmentedButton(
+                      segments: const <ButtonSegment<HistorySegmentButtonEnum>>[
+                        ButtonSegment(
+                          label: Text('Short URL'),
+                          value: HistorySegmentButtonEnum.shorturl,
+                        ),
+                        ButtonSegment(
+                          label: Text('Alias URL'),
+                          value: HistorySegmentButtonEnum.aliasurl,
+                        ),
+                      ],
+                      selected: <HistorySegmentButtonEnum>{
+                        state.segmentButtonEnum
+                      },
+                      onSelectionChanged:
+                          (Set<HistorySegmentButtonEnum> newSelection) {
+                        context
+                            .read<HistoryBloc>()
+                            .add(ChangeSegmentBtnE(newSelection.first));
+                      }),
+                  // state.shortUrlsFree.forEach((element) { })
                 ),
-              for (ShrtcoDBModel shortUrlModel in state.shrtCoUrlFree)
-                Visibility(
-                  visible: state.segmentButtonEnum ==
-                      HistorySegmentButtonEnum.shorturl,
-                  child: HistoryShrtCoCard(
-                    shrtCoUrlModel: shortUrlModel,
+                for (ShortUrlContainerDBModel shortUrlModel
+                    in state.shortUrlsFree)
+                  HistoryCard(
+                    shortUrlModel: shortUrlModel,
                   ),
-                )
-            ]
-          ],
+                for (ShrtcoDBModel shortUrlModel in state.shrtCoUrlFree)
+                  Visibility(
+                    visible: state.segmentButtonEnum ==
+                        HistorySegmentButtonEnum.shorturl,
+                    child: HistoryShrtCoCard(
+                      shrtCoUrlModel: shortUrlModel,
+                    ),
+                  )
+              ]
+            ],
+          ),
         );
       },
     );
