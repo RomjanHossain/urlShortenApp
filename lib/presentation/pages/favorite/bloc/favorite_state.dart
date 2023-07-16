@@ -1,8 +1,6 @@
 part of 'favorite_bloc.dart';
 
-/// {@template favorite_state}
 /// FavoriteState description
-/// {@endtemplate}
 class FavoriteState extends Equatable {
   /// {@macro favorite_state}
   const FavoriteState({
@@ -25,10 +23,18 @@ class FavoriteState extends Equatable {
   }
 }
 
-/// {@template favorite_initial}
 /// The initial state of FavoriteState
-/// {@endtemplate}
 class FavoriteInitial extends FavoriteState {
-  /// {@macro favorite_initial}
-  const FavoriteInitial() : super();
+  const FavoriteInitial(
+      {required this.shortUrlsFree, required this.shrtCoUrlFree})
+      : super();
+
+  /// list of short urls (from local DB)
+  final List<ShortUrlFavContainerDBModel> shortUrlsFree;
+
+  /// ShrtcoDBModel
+  final List<ShrtcoFavDBModel> shrtCoUrlFree;
+
+  @override
+  List<Object> get props => [shortUrlsFree, shrtCoUrlFree];
 }
