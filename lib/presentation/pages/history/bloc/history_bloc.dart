@@ -18,6 +18,8 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
             shortUrlsFree: const [],
             shrtCoUrlFree: const [])) {
     on<ChangeSegmentBtnE>(_onCustomHistoryEvent);
+    on<DeleteShortUrlE>(_onDeleteShortUrl);
+    on<DeleteShrtCoUrlE>(_onDeleteShrtCoUrl);
   }
 
   FutureOr<void> _onCustomHistoryEvent(
@@ -31,6 +33,41 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
 
     emit(HistoryInitial(
       segmentButtonEnum: event.segmentButtonEnum,
+      shortUrlsFree: freeUrls,
+      shrtCoUrlFree: shrtCoUrls,
+    ));
+  }
+
+  FutureOr<void> _onDeleteShortUrl(
+    DeleteShortUrlE event,
+    Emitter<HistoryState> emit,
+  ) async {
+    await shortDBImplementation
+        .removeShortUrl(event.shortUrlContainerDBModel.id);
+    List<ShortUrlContainerDBModel> freeUrls =
+        await shortDBImplementation.getAllShortUrl();
+    List<ShrtcoDBModel> shrtCoUrls =
+        await shortDBImplementation.getAllShrtCoUrl();
+
+    emit(HistoryInitial(
+      segmentButtonEnum: HistorySegmentButtonEnum.shorturl,
+      shortUrlsFree: freeUrls,
+      shrtCoUrlFree: shrtCoUrls,
+    ));
+  }
+
+  FutureOr<void> _onDeleteShrtCoUrl(
+    DeleteShrtCoUrlE event,
+    Emitter<HistoryState> emit,
+  ) async {
+    await shortDBImplementation.removeShrtCoUrl(event.shrtcoDBModel.id);
+    List<ShortUrlContainerDBModel> freeUrls =
+        await shortDBImplementation.getAllShortUrl();
+    List<ShrtcoDBModel> shrtCoUrls =
+        await shortDBImplementation.getAllShrtCoUrl();
+
+    emit(HistoryInitial(
+      segmentButtonEnum: HistorySegmentButtonEnum.aliasurl,
       shortUrlsFree: freeUrls,
       shrtCoUrlFree: shrtCoUrls,
     ));
