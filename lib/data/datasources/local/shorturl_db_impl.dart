@@ -21,6 +21,20 @@ class ShortDBImplementation {
     );
   }
 
+  /// check if the url exists
+  Future<bool> checkIfUrlExists(String url) async {
+    final isar = await db;
+    final data = await isar.shortUrlFavContainerDBModels
+        .where()
+        .filter()
+        .shortLinkEqualTo(url)
+        .findAll();
+    if (data.isEmpty) {
+      return false;
+    }
+    return true;
+  }
+
   /// remove data from db
   Future<void> removeShortUrl(int id) async {
     final isar = await db;
@@ -47,6 +61,20 @@ class ShortDBImplementation {
         shortUrl,
       ),
     );
+  }
+
+  /// check if the shrtco url exists
+  Future<bool> checkIfShrtCoUrlExists(String url) async {
+    final isar = await db;
+    final data = await isar.shrtcoFavDBModels
+        .where()
+        .filter()
+        .originalLinkEqualTo(url)
+        .findAll();
+    if (data.isEmpty) {
+      return false;
+    }
+    return true;
   }
 
   /// remove data from db
@@ -101,7 +129,9 @@ class ShortDBImplementation {
   /// remove data from db
   Future<void> removeShortUrlFAV(int id) async {
     final isar = await db;
-    await isar.shortUrlFavContainerDBModels.delete(id);
+    isar.writeTxn(() async {
+      await isar.shortUrlFavContainerDBModels.delete(id);
+    });
   }
 
   /// get all data from db
