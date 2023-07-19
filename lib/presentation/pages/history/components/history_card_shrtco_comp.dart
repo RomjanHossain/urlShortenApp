@@ -15,6 +15,11 @@ class HistoryShrtCoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // print('${shortUrlModel.shortLink} -> ${!shortUrlModel.isAlias}');
     return Dismissible(
+      onDismissed: (d) {
+        BlocProvider.of<HistoryBloc>(context).add(
+          DeleteShrtCoUrlE(shrtCoUrlModel),
+        );
+      },
       key: Key(shrtCoUrlModel.id.toString()),
       child: Card(
         child: BlocConsumer<HistoryBloc, HistoryState>(
