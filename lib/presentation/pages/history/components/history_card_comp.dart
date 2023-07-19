@@ -19,7 +19,7 @@ class HistoryCard extends StatelessWidget {
       key: Key(shortUrlModel.id.toString()),
       onDismissed: (direction) {
         BlocProvider.of<HistoryBloc>(context).add(
-          DeleteShortUrlE(shortUrlModel),
+          DeleteShortUrlE(shortUrlModel, shortUrlModel.isAlias),
         );
       },
       child: Card(

@@ -16,6 +16,11 @@ class FavShrtCoCard extends StatelessWidget {
     // print('${shortUrlModel.shortLink} -> ${!shortUrlModel.isAlias}');
     return Dismissible(
       key: Key(shrtCoUrlModel.id.toString()),
+      onDismissed: (d) {
+        context
+            .read<FavoriteBloc>()
+            .add(RemoveShrtFromFavE(id: shrtCoUrlModel.id));
+      },
       child: Card(
         child: BlocConsumer<FavoriteBloc, FavoriteState>(
           listener: (context, state) {},
