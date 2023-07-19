@@ -18,9 +18,10 @@ class ChangeSegmentBtnE extends HistoryEvent {
 }
 
 class DeleteShortUrlE extends HistoryEvent {
-  const DeleteShortUrlE(this.shortUrlContainerDBModel);
+  const DeleteShortUrlE(this.shortUrlContainerDBModel, this.isAlias);
 
   final ShortUrlContainerDBModel shortUrlContainerDBModel;
+  final bool isAlias;
 }
 
 class DeleteShrtCoUrlE extends HistoryEvent {
