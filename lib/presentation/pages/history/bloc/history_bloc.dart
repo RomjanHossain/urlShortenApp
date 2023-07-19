@@ -50,7 +50,9 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
         await shortDBImplementation.getAllShrtCoUrl();
 
     emit(HistoryInitial(
-      segmentButtonEnum: HistorySegmentButtonEnum.shorturl,
+      segmentButtonEnum: event.isAlias
+          ? HistorySegmentButtonEnum.aliasurl
+          : HistorySegmentButtonEnum.shorturl,
       shortUrlsFree: freeUrls,
       shrtCoUrlFree: shrtCoUrls,
     ));
@@ -67,7 +69,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
         await shortDBImplementation.getAllShrtCoUrl();
 
     emit(HistoryInitial(
-      segmentButtonEnum: HistorySegmentButtonEnum.aliasurl,
+      segmentButtonEnum: HistorySegmentButtonEnum.shorturl,
       shortUrlsFree: freeUrls,
       shrtCoUrlFree: shrtCoUrls,
     ));
