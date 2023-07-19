@@ -21,10 +21,25 @@ class ShortDBImplementation {
     );
   }
 
+  /// check if the url exists
+  Future<bool> checkIfUrlExists(String url) async {
+    final isar = await db;
+    final data = await isar.shortUrlFavContainerDBModels
+        .where()
+        .filter()
+        .shortLinkEqualTo(url)
+        .findAll();
+    if (data.isEmpty) {
+      return false;
+    }
+    return true;
+  }
+
   /// remove data from db
   Future<void> removeShortUrl(int id) async {
     final isar = await db;
-    await isar.shortUrlContainerDBModels.delete(id);
+    await isar.writeTxn(() => isar.shortUrlContainerDBModels.delete(id));
+    // await isar.shortUrlContainerDBModels.delete(id);
   }
 
   /// get all data from db
@@ -49,10 +64,25 @@ class ShortDBImplementation {
     );
   }
 
+  /// check if the shrtco url exists
+  Future<bool> checkIfShrtCoUrlExists(String url) async {
+    final isar = await db;
+    final data = await isar.shrtcoFavDBModels
+        .where()
+        .filter()
+        .originalLinkEqualTo(url)
+        .findAll();
+    if (data.isEmpty) {
+      return false;
+    }
+    return true;
+  }
+
   /// remove data from db
   Future<void> removeShrtCoUrl(int id) async {
     final isar = await db;
-    await isar.shrtcoDBModels.delete(id);
+    await isar.writeTxn(() => isar.shrtcoDBModels.delete(id));
+    // await isar.shrtcoDBModels.delete(id);
   }
 
   /// get all data from db
@@ -78,7 +108,8 @@ class ShortDBImplementation {
   /// remove data from db
   Future<void> removeShrtCoUrlFAV(int id) async {
     final isar = await db;
-    await isar.shrtcoFavDBModels.delete(id);
+    await isar.writeTxn(() => isar.shrtcoFavDBModels.delete(id));
+    // await isar.shrtcoFavDBModels.delete(id);
   }
 
   /// get all data from db
@@ -101,7 +132,10 @@ class ShortDBImplementation {
   /// remove data from db
   Future<void> removeShortUrlFAV(int id) async {
     final isar = await db;
-    await isar.shortUrlFavContainerDBModels.delete(id);
+    // await isar.writeTxn(() {
+    //   isar.shortUrlFavContainerDBModels.delete(id);
+    // });
+    await isar.writeTxn(() => isar.shortUrlFavContainerDBModels.delete(id));
   }
 
   /// get all data from db

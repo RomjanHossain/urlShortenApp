@@ -16,3 +16,16 @@ class ChangeSegmentBtnE extends HistoryEvent {
 
   final HistorySegmentButtonEnum segmentButtonEnum;
 }
+
+class DeleteShortUrlE extends HistoryEvent {
+  const DeleteShortUrlE(this.shortUrlContainerDBModel, this.isAlias);
+
+  final ShortUrlContainerDBModel shortUrlContainerDBModel;
+  final bool isAlias;
+}
+
+class DeleteShrtCoUrlE extends HistoryEvent {
+  const DeleteShrtCoUrlE(this.shrtcoDBModel);
+
+  final ShrtcoDBModel shrtcoDBModel;
+}

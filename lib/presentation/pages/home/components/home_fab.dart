@@ -12,7 +12,7 @@ class HomeFloatingActionBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeSwitcher.withTheme(
-      builder: (_, switcher, theme) {
+      builder: (_, ThemeSwitcherState switcher, ThemeData theme) {
         return FloatingActionButton(
           shape: const CircleBorder(),
           onPressed: () => switcher.changeTheme(

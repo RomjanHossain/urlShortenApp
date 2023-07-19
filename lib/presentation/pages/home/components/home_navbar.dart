@@ -1,8 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/params/history_page_params.dart';
 import 'package:url_shorten/core/params/home_page_params.dart';
+import 'package:url_shorten/presentation/pages/favorite/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
 
 import '../../history/bloc/history_bloc.dart';
@@ -26,9 +26,12 @@ class HomeBottomNav extends StatelessWidget {
                   ? 2
                   : 3,
       gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.verySmoothEdge,
+      notchSmoothness: NotchSmoothness.defaultEdge,
       leftCornerRadius: HomePageParams.bottomNavCornerRaidus,
       rightCornerRadius: HomePageParams.bottomNavCornerRaidus,
+      blurEffect: true,
+      hideAnimationCurve: Curves.easeOut,
+      elevation: 0,
       icons: const [
         Icons.home_rounded,
         Icons.favorite_rounded,
@@ -36,6 +39,9 @@ class HomeBottomNav extends StatelessWidget {
         Icons.settings_rounded,
       ],
       onTap: (x) {
+        if (x == 1) {
+          context.read<FavoriteBloc>().add(const CustomFavoriteEvent());
+        }
         if (x == 2) {
           context
               .read<HistoryBloc>()

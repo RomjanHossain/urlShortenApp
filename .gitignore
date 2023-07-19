@@ -141,3 +141,4 @@ lib/data/models/shorturl_container_db_model.g.dart
 lib/data/models/shrtco_db_model.g.dart
 lib/data/models/shorturl_container_fav_db_model.g.dart
 lib/data/models/shrtco_fav_db_model.g.dart
+lib/domain/usecases/is_favorite_usecase.dart.d
