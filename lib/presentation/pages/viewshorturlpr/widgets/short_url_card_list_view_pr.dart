@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/domain/entities/error_entities.dart';
 import 'package:url_shorten/domain/entities/rebrandly_entities.dart';
 import 'package:url_shorten/domain/entities/tinyurl_enitites.dart';
 import 'package:url_shorten/domain/entities/ulvis_entities.dart';
 import 'package:url_shorten/domain/entities/urlbae_entities.dart';
+import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
+import 'package:url_shorten/presentation/pages/viewshorturl/components/fav_button.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shrt_small_card.dart';
 import 'package:url_shorten/presentation/pages/viewshorturlpr/bloc/viewshorturlpr_bloc.dart';
 
@@ -23,6 +26,7 @@ class ShortUrlCardListViewPr extends StatelessWidget {
       child: ListView.builder(
         itemCount: state.surls.length + 1,
         itemBuilder: (context, index) {
+          var homeState = context.read<HomeBloc>().state;
           if (index == state.surls.length) {
             return const SizedBox(height: 100);
           }
@@ -31,30 +35,63 @@ class ShortUrlCardListViewPr extends StatelessWidget {
           print('$index ${data.runtimeType}');
           if (data.runtimeType == UlvisEntity) {
             data = data as UlvisEntity;
-            return Card(
-              child: ListTile(
-                title: const Text('Ulvis'),
-                subtitle: ShrtcoSmllCard(txt: data.data.url),
-              ),
+            return Stack(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: const Text('Ulvis'),
+                    subtitle: ShrtcoSmllCard(txt: data.data.url),
+                  ),
+                ),
+                IsFavIconButton(
+                  url: data.data.url,
+                  domain: 'UrlBae',
+                  originURL: homeState is HomeInitial
+                      ? homeState.urlController.text
+                      : '',
+                ),
+              ],
             );
           }
           if (data.runtimeType == RebrandlyEntities) {
             data = data as RebrandlyEntities;
-            return Card(
-              child: ListTile(
-                title: const Text('Rebrandly'),
-                subtitle: ShrtcoSmllCard(txt: data.shortURL),
-              ),
+            return Stack(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: const Text('Rebrandly'),
+                    subtitle: ShrtcoSmllCard(txt: data.shortURL),
+                  ),
+                ),
+                IsFavIconButton(
+                  url: data.shortURL,
+                  domain: 'UrlBae',
+                  originURL: homeState is HomeInitial
+                      ? homeState.urlController.text
+                      : '',
+                ),
+              ],
             );
           }
           if (data.runtimeType == TinyUrlEntities) {
             data = data as TinyUrlEntities;
 
-            return Card(
-              child: ListTile(
-                title: const Text('TinyUrl'),
-                subtitle: ShrtcoSmllCard(txt: data.data?.tinyUrl ?? ""),
-              ),
+            return Stack(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: const Text('TinyUrl'),
+                    subtitle: ShrtcoSmllCard(txt: data.data?.tinyUrl ?? ""),
+                  ),
+                ),
+                IsFavIconButton(
+                  url: data.data?.tinyUrl ?? "",
+                  domain: 'UrlBae',
+                  originURL: homeState is HomeInitial
+                      ? homeState.urlController.text
+                      : '',
+                ),
+              ],
             );
           }
           if (data.runtimeType == ErrorModel) {
@@ -70,13 +107,24 @@ class ShortUrlCardListViewPr extends StatelessWidget {
           if (data.runtimeType == UrlBaeEntity) {
             data = data as UrlBaeEntity;
             // ErrorModel
-            return Card(
-              child: ListTile(
-                title: const Text('UrlBae'),
-                subtitle: ShrtcoSmllCard(
-                  txt: data.shortUrl ?? 'Empty',
+            return Stack(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: const Text('UrlBae'),
+                    subtitle: ShrtcoSmllCard(
+                      txt: data.shortUrl ?? 'Empty',
+                    ),
+                  ),
                 ),
-              ),
+                IsFavIconButton(
+                  url: data.shortUrl ?? 'Empty',
+                  domain: 'UrlBae',
+                  originURL: homeState is HomeInitial
+                      ? homeState.urlController.text
+                      : '',
+                ),
+              ],
             );
           }
           return const Card(
