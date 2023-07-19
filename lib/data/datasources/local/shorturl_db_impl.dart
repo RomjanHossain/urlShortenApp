@@ -132,9 +132,10 @@ class ShortDBImplementation {
   /// remove data from db
   Future<void> removeShortUrlFAV(int id) async {
     final isar = await db;
-    isar.writeTxn(() async {
-      await isar.shortUrlFavContainerDBModels.delete(id);
-    });
+    // await isar.writeTxn(() {
+    //   isar.shortUrlFavContainerDBModels.delete(id);
+    // });
+    await isar.writeTxn(() => isar.shortUrlFavContainerDBModels.delete(id));
   }
 
   /// get all data from db
