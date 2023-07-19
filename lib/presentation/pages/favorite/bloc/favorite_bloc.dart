@@ -42,9 +42,9 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
 
-  FutureOr<void> _onAddShrtFavE(event, emit) async {
-    await shortDBImplementation.insertShrCotUrlFAV(
-      event.shortUrlFavContainerDBModel,
+  FutureOr<void> _onRemoveFavE(event, emit) async {
+    await shortDBImplementation.removeShortUrlFAV(
+      event.id,
     );
     List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
@@ -53,9 +53,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
 
-  FutureOr<void> _onRemoveFavE(event, emit) async {
-    await shortDBImplementation.removeShortUrlFAV(
-      event.id,
+  ///? shrtCO
+  FutureOr<void> _onAddShrtFavE(event, emit) async {
+    await shortDBImplementation.insertShrCotUrlFAV(
+      event.shortUrlFavContainerDBModel,
     );
     List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
