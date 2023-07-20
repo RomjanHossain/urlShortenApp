@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_shorten/presentation/pages/settings/bloc/bloc.dart';
 
@@ -17,7 +18,7 @@ class SettingsBody extends StatelessWidget {
         return ListView(
           children: [
             // app logo
-            FlutterLogo(
+            const FlutterLogo(
               size: 125,
             ),
             // app name
@@ -27,27 +28,128 @@ class SettingsBody extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
-            // view repo button
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('View Repo'),
+            SizedBox(
+              height: 20,
             ),
+            // view repo button
+            const Card(
+              child: ListTile(
+                leading: Icon(Icons.code),
+                title: Text('View Repo'),
+              ),
+            ),
+
             // view authors profile
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('View Authors Profile'),
+            const Card(
+              child: ListTile(
+                leading: Icon(Icons.person),
+                title: Text('View Authors Profile'),
+              ),
             ),
 
             /// delete all history button
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Delete All History'),
+
+            Card(
+              child: ListTile(
+                onTap: () {
+                  /// show a dialog to confirm the action
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        // contentPadding: const EdgeInsets.all(5),
+                        insetPadding: const EdgeInsets.all(5),
+                        title: const Text('Delete All History'),
+                        content: const Text(
+                            'Are you sure you want to delete all history?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.redAccent,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Delete'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                leading: Icon(
+                  CupertinoIcons.delete,
+                  color: Colors.redAccent,
+                ),
+                title: Text(
+                  'Delete All History',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Colors.redAccent,
+                      ),
+                ),
+              ),
             ),
 
             /// delete all favorite
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Delete All Favorite'),
+
+            Card(
+              child: ListTile(
+                onTap: () {
+                  /// show a dialog to confirm the action
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        // contentPadding: const EdgeInsets.all(5),
+                        insetPadding: const EdgeInsets.all(5),
+                        title: const Text('Delete All Favorite'),
+                        content: const Text(
+                            'Are you sure you want to delete all favorite?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.redAccent,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Delete'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                leading: Icon(
+                  Icons.delete_forever_rounded,
+                  color: Colors.redAccent,
+                ),
+                title: Text(
+                  'Delete All Favorite',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Colors.redAccent,
+                      ),
+                ),
+              ),
+            ),
+            // view licence
+            const Card(
+              child: ListTile(
+                leading: Icon(Icons.info_rounded),
+                title: Text('View Licence'),
+              ),
             ),
           ],
         );
