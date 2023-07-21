@@ -33,19 +33,15 @@ class IsFavIconButton extends StatelessWidget {
                   // state.shortUrlsFree.forEach((e) => print(e.shortLink));
 
                   if (isFav) {
-                    print('oh yeah! this is fav');
                     ShortUrlFavContainerDBModel d = state.shortUrlsFree
                         .where((element) => element.shortLink == url)
                         .first;
-                    print(d.shortLink);
                     context.read<FavoriteBloc>().add(
                           RemoveFromFavE(
                             id: d.id,
                           ),
                         );
                   } else {
-                    print('nah man! this aint');
-
                     context.read<FavoriteBloc>().add(AddToFavE(
                         shortUrlFavContainerDBModel:
                             ShortUrlFavContainerDBModel()
@@ -60,7 +56,7 @@ class IsFavIconButton extends StatelessWidget {
               ),
             );
           }
-          return SizedBox();
+          return const SizedBox.shrink();
         });
 
     // return const SizedBox.shrink();
