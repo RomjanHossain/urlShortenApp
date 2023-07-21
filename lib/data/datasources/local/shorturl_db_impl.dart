@@ -149,6 +149,54 @@ class ShortDBImplementation {
         .findAll();
   }
 
+  /// remove all history
+  Future<void> removeAllHistory() async {
+    final isar = await db;
+    final List<ShortUrlContainerDBModel> allHistory = await isar
+        .shortUrlContainerDBModels
+        .where()
+        .sortByCreationDateDesc()
+        .findAll();
+    final List<ShrtcoDBModel> allHistoryShrt =
+        await isar.shrtcoDBModels.where().sortByCreationDateDesc().findAll();
+
+    /// remove all history
+    for (ShortUrlContainerDBModel history in allHistory) {
+      await isar.writeTxn(
+        () => isar.shortUrlContainerDBModels.delete(history.id),
+      );
+    }
+    for (ShrtcoDBModel history in allHistoryShrt) {
+      await isar.writeTxn(
+        () => isar.shrtcoDBModels.delete(history.id),
+      );
+    }
+  }
+
+  /// remove all fav
+  Future<void> removeAllFav() async {
+    final isar = await db;
+    final List<ShortUrlFavContainerDBModel> allFav = await isar
+        .shortUrlFavContainerDBModels
+        .where()
+        .sortByCreationDateDesc()
+        .findAll();
+    final List<ShrtcoFavDBModel> allFavShrt =
+        await isar.shrtcoFavDBModels.where().sortByCreationDateDesc().findAll();
+
+    /// remove all fav
+    for (ShortUrlFavContainerDBModel fav in allFav) {
+      await isar.writeTxn(
+        () => isar.shortUrlFavContainerDBModels.delete(fav.id),
+      );
+    }
+    for (ShrtcoFavDBModel fav in allFavShrt) {
+      await isar.writeTxn(
+        () => isar.shrtcoFavDBModels.delete(fav.id),
+      );
+    }
+  }
+
   /// open the db
   Future<Isar> openIsar() async {
     final dir = await getApplicationDocumentsDirectory();

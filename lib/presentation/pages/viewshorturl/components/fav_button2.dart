@@ -21,51 +21,49 @@ class IsFavIconButton2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favState = context.read<FavoriteBloc>().state;
-
-    if (favState is FavoriteInitial) {
-      final isFav2 = favState.shrtCoUrlFree.any((element) {
-        return (element.shrtLink1 == url1) ||
-            (element.shrtLink2 == url2) ||
-            (element.shrtLink3 == url3);
-      });
-      return Align(
-        alignment: Alignment.topRight,
-        child: IconButton.outlined(
-          onPressed: () {
-            if (isFav2) {
-              ShrtcoFavDBModel d = favState.shrtCoUrlFree.where((element) {
-                return (element.shrtLink1 == url1) ||
-                    (element.shrtLink2 == url2) ||
-                    (element.shrtLink3 == url3);
-              }).first;
-              context.read<FavoriteBloc>().add(
-                    RemoveShrtFromFavE(
-                      id: d.id,
-                    ),
-                  );
-            } else {
-              context.read<FavoriteBloc>().add(
-                    AddToShrtFavE(
-                        shortUrlFavContainerDBModel: ShrtcoFavDBModel()
-                          ..originalLink = originURL
-                          ..shrtLink1 = url1
-                          ..shrtLink2 = url2
-                          ..shrtLink3 = url3),
-                  );
-            }
-            // context.read<FavoriteBloc>().add();
-            // ShortUrlFavContainerDBModel()
-            //   ..domain = domain
-            //   ..shortLink = url
-            //   ..originalLink = originURL,
-          },
-          icon: isFav2
-              ? const Icon(Icons.favorite_rounded)
-              : const Icon(Icons.favorite_border_rounded),
-        ),
-      );
-    }
-    return const SizedBox.shrink();
+    return BlocConsumer<FavoriteBloc, FavoriteState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is FavoriteInitial) {
+          final isFav2 = state.shrtCoUrlFree.any((element) {
+            return (element.shrtLink1 == url1) ||
+                (element.shrtLink2 == url2) ||
+                (element.shrtLink3 == url3);
+          });
+          return Align(
+            alignment: Alignment.topRight,
+            child: IconButton.outlined(
+              onPressed: () {
+                if (isFav2) {
+                  ShrtcoFavDBModel d = state.shrtCoUrlFree.where((element) {
+                    return (element.shrtLink1 == url1) ||
+                        (element.shrtLink2 == url2) ||
+                        (element.shrtLink3 == url3);
+                  }).first;
+                  context.read<FavoriteBloc>().add(
+                        RemoveShrtFromFavE(
+                          id: d.id,
+                        ),
+                      );
+                } else {
+                  context.read<FavoriteBloc>().add(
+                        AddToShrtFavE(
+                            shortUrlFavContainerDBModel: ShrtcoFavDBModel()
+                              ..originalLink = originURL
+                              ..shrtLink1 = url1
+                              ..shrtLink2 = url2
+                              ..shrtLink3 = url3),
+                      );
+                }
+              },
+              icon: isFav2
+                  ? const Icon(Icons.favorite_rounded)
+                  : const Icon(Icons.favorite_border_rounded),
+            ),
+          );
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 }
