@@ -10,19 +10,18 @@ class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
   /// The static route for SplashPage
-  static Route<dynamic> route() {
-    return MaterialPageRoute<dynamic>(builder: (_) => const SplashPage());
-  }
+  static Route<dynamic> route() =>
+      MaterialPageRoute<dynamic>(builder: (_) => const SplashPage());
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SplashBloc()..add(InitSplashEvent(context)),
-      child: const Scaffold(
-        body: SplashView(),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => BlocProvider<SplashBloc>(
+        create: (BuildContext context) =>
+            SplashBloc()..add(InitSplashEvent(context)),
+        child: const Scaffold(
+          // backgroundColor: Color(0xffbe63f9),
+          body: SplashView(),
+        ),
+      );
 }
 
 /// {@template splash_view}
@@ -33,7 +32,5 @@ class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const SplashBody();
-  }
+  Widget build(BuildContext context) => const SplashBody();
 }

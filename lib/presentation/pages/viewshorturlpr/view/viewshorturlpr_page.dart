@@ -9,21 +9,17 @@ class ViewshorturlprPage extends StatelessWidget {
   const ViewshorturlprPage({super.key});
 
   /// The static route for ViewshorturlprPage
-  static Route<dynamic> route() {
-    return MaterialPageRoute<dynamic>(
-        builder: (_) => const ViewshorturlprPage());
-  }
+  static Route<dynamic> route() => MaterialPageRoute<dynamic>(
+        builder: (_) => const ViewshorturlprPage(),);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Alias URL'),
         centerTitle: true,
       ),
       body: const ViewshorturlprView(),
     );
-  }
 }
 
 /// {@template viewshorturlpr_view}
@@ -34,7 +30,5 @@ class ViewshorturlprView extends StatelessWidget {
   const ViewshorturlprView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const ViewshorturlprBody();
-  }
+  Widget build(BuildContext context) => const ViewshorturlprBody();
 }

@@ -6,31 +6,29 @@ import 'package:url_shorten/presentation/pages/favorite/components/fav_short_car
 
 class FavCard extends StatelessWidget {
   const FavCard({
-    super.key,
     required this.shortUrlModel,
+    super.key,
   });
 
   final ShortUrlFavContainerDBModel shortUrlModel;
   @override
-  Widget build(BuildContext context) {
-    // print('${shortUrlModel.shortLink} -> ${!shortUrlModel.isAlias}');
-    return Dismissible(
-      key: Key(shortUrlModel.id.toString()),
-      onDismissed: (_) {
-        print('removing -> ${shortUrlModel.id}');
-        context.read<FavoriteBloc>().add(RemoveFromFavE(id: shortUrlModel.id));
-      },
-      child: Card(
-        child: BlocConsumer<FavoriteBloc, FavoriteState>(
-          listener: (context, state) {},
-          builder: (context, FavoriteState state) {
-            if (state is FavoriteInitial) {
-              return FavCardListTile(shortUrlModel: shortUrlModel);
-            }
-            return const SizedBox.shrink();
-          },
+  Widget build(BuildContext context) => Dismissible(
+        key: Key(shortUrlModel.id.toString()),
+        onDismissed: (_) {
+          context
+              .read<FavoriteBloc>()
+              .add(RemoveFromFavE(id: shortUrlModel.id));
+        },
+        child: Card(
+          child: BlocConsumer<FavoriteBloc, FavoriteState>(
+            listener: (BuildContext context, FavoriteState state) {},
+            builder: (BuildContext context, FavoriteState state) {
+              if (state is FavoriteInitial) {
+                return FavCardListTile(shortUrlModel: shortUrlModel);
+              }
+              return const SizedBox.shrink();
+            },
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

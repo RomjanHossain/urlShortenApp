@@ -23,18 +23,21 @@ class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SettingsBloc, SettingsState>(
-      builder: (context, state) {
-        return ScrollConfiguration(
+  Widget build(BuildContext context) =>
+      BlocBuilder<SettingsBloc, SettingsState>(
+        builder: (BuildContext context, SettingsState state) =>
+            ScrollConfiguration(
           behavior: const ScrollBehavior().copyWith(
             scrollbars: false,
           ),
           child: ListView(
-            children: [
+            children: <Widget>[
               // app logo
-              const FlutterLogo(
-                size: 125,
+              Image.asset(
+                'logo/logo.png',
+                fit: BoxFit.contain,
+                width: 150,
+                height: 150,
               ),
               // app name
               Center(
@@ -76,11 +79,9 @@ class SettingsBody extends StatelessWidget {
                     isDismissible: false,
 
                     context: context,
-                    builder: (context) {
-                      return const Markdown(
-                        data: gplLICENCE,
-                      );
-                    },
+                    builder: (BuildContext context) => const Markdown(
+                      data: gplLICENCE,
+                    ),
                   );
                 },
               ),
@@ -97,9 +98,8 @@ class SettingsBody extends StatelessWidget {
                   /// open a bottom sheet to show the privacy policy
                   await showModalBottomSheet(
                     context: context,
-                    builder: (context) {
-                      return const Markdown(data: privacyPolicy);
-                    },
+                    builder: (BuildContext context) =>
+                        const Markdown(data: privacyPolicy),
                   );
                 },
               ),
@@ -113,9 +113,8 @@ class SettingsBody extends StatelessWidget {
                 onTap: () async {
                   await showModalBottomSheet(
                     context: context,
-                    builder: (context) {
-                      return const Markdown(data: termsAndCondition);
-                    },
+                    builder: (BuildContext context) =>
+                        const Markdown(data: termsAndCondition),
                   );
                 },
               ),
@@ -137,13 +136,11 @@ class SettingsBody extends StatelessWidget {
                   /// show a dialog to confirm the action
                   await showDialog(
                     context: context,
-                    builder: (context) {
-                      return const DeleteAlertDialog(
-                        content: 'Are you sure you want to delete all history?',
-                        title: 'Delete All History',
-                        deleteType: DeleteType.deleteAllHistory,
-                      );
-                    },
+                    builder: (BuildContext context) => const DeleteAlertDialog(
+                      content: 'Are you sure you want to delete all history?',
+                      title: 'Delete All History',
+                      deleteType: DeleteType.deleteAllHistory,
+                    ),
                   );
                 },
               ),
@@ -164,14 +161,11 @@ class SettingsBody extends StatelessWidget {
                 onTap: () async {
                   await showDialog(
                     context: context,
-                    builder: (context) {
-                      return const DeleteAlertDialog(
-                        content:
-                            'Are you sure you want to delete all favorite?',
-                        title: 'Delete All Favorite',
-                        deleteType: DeleteType.deleteAllFav,
-                      );
-                    },
+                    builder: (BuildContext context) => const DeleteAlertDialog(
+                      content: 'Are you sure you want to delete all favorite?',
+                      title: 'Delete All Favorite',
+                      deleteType: DeleteType.deleteAllFav,
+                    ),
                   );
                 },
               ),
@@ -180,8 +174,6 @@ class SettingsBody extends StatelessWidget {
               ),
             ],
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
 }

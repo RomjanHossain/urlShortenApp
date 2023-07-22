@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_shorten/presentation/pages/viewshorturlpr/bloc/bloc.dart';
 import 'package:url_shorten/presentation/pages/viewshorturlpr/widgets/short_url_card_list_view_pr.dart';
 import 'package:url_shorten/presentation/widgets/loading_listview.dart';
-import 'package:url_shorten/presentation/pages/viewshorturlpr/bloc/bloc.dart';
 
 /// {@template viewshorturlpr_body}
 /// Body of the ViewshorturlprPage.
@@ -13,9 +13,8 @@ class ViewshorturlprBody extends StatelessWidget {
   const ViewshorturlprBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ViewshorturlprBloc, ViewshorturlprState>(
-      builder: (context, state) {
+  Widget build(BuildContext context) => BlocBuilder<ViewshorturlprBloc, ViewshorturlprState>(
+      builder: (BuildContext context, ViewshorturlprState state) {
         if (state is ViewshorturlPremiumLoading) {
           // return const Center(child: CircularProgressIndicator());
           return const LoadingListView();
@@ -42,5 +41,4 @@ class ViewshorturlprBody extends StatelessWidget {
         return const Center(child: Text('Premium Page'));
       },
     );
-  }
 }

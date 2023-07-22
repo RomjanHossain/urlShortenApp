@@ -5,16 +5,13 @@ import 'package:url_shorten/presentation/pages/viewshorturlpr/bloc/viewshorturlp
 
 class CustomAlertDialog extends StatelessWidget {
   CustomAlertDialog({
-    super.key,
-    required this.onPressed,
-    required this.originURL,
+    required this.onPressed, required this.originURL, super.key,
   });
   final void Function() onPressed;
   final TextEditingController _textFieldController = TextEditingController();
   final String originURL;
   @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
+  Widget build(BuildContext context) => AlertDialog(
       // contentPadding: const EdgeInsets.all(2),
       insetPadding: const EdgeInsets.all(2),
       title: const Text('Custom Alias'),
@@ -62,5 +59,4 @@ class CustomAlertDialog extends StatelessWidget {
         ),
       ],
     );
-  }
 }

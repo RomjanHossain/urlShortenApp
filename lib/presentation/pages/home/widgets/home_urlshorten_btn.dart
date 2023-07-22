@@ -6,15 +6,14 @@ import 'package:url_shorten/presentation/pages/viewshorturl/bloc/viewshorturl_bl
 
 class ShortenUrlButton extends StatelessWidget {
   const ShortenUrlButton({
-    super.key,
-    required this.textEditingController,
+    required this.textEditingController, super.key,
   });
 
   final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+    final ThemeData theme = Theme.of(context);
     return ElevatedButton(
       onPressed: () {
         // print('the txt mm -> ${textEditingController.text}');
@@ -22,7 +21,7 @@ class ShortenUrlButton extends StatelessWidget {
         if (textEditingController.text.isEmpty) {
           errorSnakeBar('Please enter a URL', context);
         } else {
-          String url = textEditingController.text;
+          final String url = textEditingController.text;
           if (HomePageParams.isURL(url)) {
             /// Add the url to the bloc.
             context
@@ -34,7 +33,7 @@ class ShortenUrlButton extends StatelessWidget {
             context.read<ViewshorturlBloc>().add(GetShortUrlEvent(url: url));
             // if the url is not empty, add the ShortenUrlEvent to the bloc.
             context.read<HomeBloc>().add(
-                  GotoViewShortUrlPageEvent(context
+                  GotoViewShortUrlPageEvent(context,
                       // url: state.urlController.text,
                       ),
                 );
@@ -51,8 +50,7 @@ class ShortenUrlButton extends StatelessWidget {
   }
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> errorSnakeBar(
-      String msg, BuildContext context) {
-    return ScaffoldMessenger.of(context).showSnackBar(
+      String msg, BuildContext context,) => ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
@@ -66,5 +64,4 @@ class ShortenUrlButton extends StatelessWidget {
         ),
       ),
     );
-  }
 }

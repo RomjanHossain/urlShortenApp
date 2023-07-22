@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:url_shorten/presentation/pages/favorite/favorite.dart';
 import 'package:url_shorten/presentation/pages/history/history.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
-import 'package:url_shorten/presentation/pages/home/widgets/home_body.dart';
 import 'package:url_shorten/presentation/pages/home/components/home_fab.dart';
 import 'package:url_shorten/presentation/pages/home/components/home_navbar.dart';
+import 'package:url_shorten/presentation/pages/home/widgets/home_body.dart';
 import 'package:url_shorten/presentation/pages/settings/settings.dart';
 
 /// {@template home_page}
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeState state = context.watch<HomeBloc>().state;
+    final HomeState state = context.watch<HomeBloc>().state;
     return ThemeSwitchingArea(
       child: Scaffold(
         appBar: state is HomeInitial
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                     ? 'Favorite'
                     : state is HistoryPageState
                         ? 'History'
-                        : 'Settings'),
+                        : 'Settings',),
               ),
         body: state is HomeInitial
             ? const HomeView()
@@ -52,7 +52,5 @@ class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const HomeBody();
-  }
+  Widget build(BuildContext context) => const HomeBody();
 }
