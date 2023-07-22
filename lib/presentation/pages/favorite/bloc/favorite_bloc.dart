@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls, always_specify_types
+
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
@@ -9,46 +11,50 @@ part 'favorite_event.dart';
 part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
-  ShortDBImplementation shortDBImplementation = ShortDBImplementation();
-
   FavoriteBloc()
-      : super(const FavoriteInitial(shortUrlsFree: [], shrtCoUrlFree: [])) {
+      : super(
+          const FavoriteInitial(
+            shortUrlsFree: <ShortUrlFavContainerDBModel>[],
+            shrtCoUrlFree: <ShrtcoFavDBModel>[],
+          ),
+        ) {
     on<CustomFavoriteEvent>(_onCustomFavoriteEvent);
     on<AddToFavE>(_onAddFavE);
     on<RemoveFromFavE>(_onRemoveFavE);
     on<AddToShrtFavE>(_onAddShrtFavE);
     on<RemoveShrtFromFavE>(_onRemoveShrtFavE);
   }
+  ShortDBImplementation shortDBImplementation = ShortDBImplementation();
 
   FutureOr<void> _onCustomFavoriteEvent(
     CustomFavoriteEvent event,
     Emitter<FavoriteState> emit,
   ) async {
-    List<ShortUrlFavContainerDBModel> freeUrls =
+    final List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
-    List<ShrtcoFavDBModel> shrtCoUrls =
+    final List<ShrtcoFavDBModel> shrtCoUrls =
         await shortDBImplementation.getAllShrtCoUrlFAV();
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
 
   FutureOr<void> _onAddFavE(event, emit) async {
     await shortDBImplementation.insertShortUrlFAV(
-      event.shortUrlFavContainerDBModel,
+      event.shortUrlFavContainerDBModel as ShortUrlFavContainerDBModel,
     );
-    List<ShortUrlFavContainerDBModel> freeUrls =
+    final List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
-    List<ShrtcoFavDBModel> shrtCoUrls =
+    final List<ShrtcoFavDBModel> shrtCoUrls =
         await shortDBImplementation.getAllShrtCoUrlFAV();
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
 
   FutureOr<void> _onRemoveFavE(event, emit) async {
     await shortDBImplementation.removeShortUrlFAV(
-      event.id,
+      event.id as int,
     );
-    List<ShortUrlFavContainerDBModel> freeUrls =
+    final List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
-    List<ShrtcoFavDBModel> shrtCoUrls =
+    final List<ShrtcoFavDBModel> shrtCoUrls =
         await shortDBImplementation.getAllShrtCoUrlFAV();
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
@@ -56,22 +62,22 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   ///? shrtCO
   FutureOr<void> _onAddShrtFavE(event, emit) async {
     await shortDBImplementation.insertShrCotUrlFAV(
-      event.shortUrlFavContainerDBModel,
+      event.shortUrlFavContainerDBModel as ShrtcoFavDBModel,
     );
-    List<ShortUrlFavContainerDBModel> freeUrls =
+    final List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
-    List<ShrtcoFavDBModel> shrtCoUrls =
+    final List<ShrtcoFavDBModel> shrtCoUrls =
         await shortDBImplementation.getAllShrtCoUrlFAV();
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
 
   FutureOr<void> _onRemoveShrtFavE(event, emit) async {
     await shortDBImplementation.removeShrtCoUrlFAV(
-      event.id,
+      event.id as int,
     );
-    List<ShortUrlFavContainerDBModel> freeUrls =
+    final List<ShortUrlFavContainerDBModel> freeUrls =
         await shortDBImplementation.getAllShortUrlFAV();
-    List<ShrtcoFavDBModel> shrtCoUrls =
+    final List<ShrtcoFavDBModel> shrtCoUrls =
         await shortDBImplementation.getAllShrtCoUrlFAV();
     emit(FavoriteInitial(shortUrlsFree: freeUrls, shrtCoUrlFree: shrtCoUrls));
   }
