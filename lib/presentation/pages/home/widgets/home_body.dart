@@ -9,41 +9,38 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+    final ThemeData theme = Theme.of(context);
     return BlocBuilder<HomeBloc, HomeState>(
-      builder: (BuildContext context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Shorten Your URL',
-              style: theme.textTheme.headlineLarge,
-              textAlign: TextAlign.center,
-            ),
-            // A text field to enter the URL to be shortened.
-            if (state is HomeInitial)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: state.urlController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter URL',
-                    hintStyle: theme.textTheme.bodyLarge,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+      builder: (BuildContext context, HomeState state) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Shorten Your URL',
+            style: theme.textTheme.headlineLarge,
+            textAlign: TextAlign.center,
+          ),
+          // A text field to enter the URL to be shortened.
+          if (state is HomeInitial)
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: TextField(
+                controller: state.urlController,
+                decoration: InputDecoration(
+                  hintText: 'Enter URL',
+                  hintStyle: theme.textTheme.bodyLarge,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
-            // A button to shorten the URL.
-            if (state is HomeInitial)
-              ShortenUrlButton(
-                textEditingController: state.urlController,
-              ),
-          ],
-        );
-      },
+            ),
+          // A button to shorten the URL.
+          if (state is HomeInitial)
+            ShortenUrlButton(
+              textEditingController: state.urlController,
+            ),
+        ],
+      ),
     );
   }
 }

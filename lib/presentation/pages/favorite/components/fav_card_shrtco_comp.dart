@@ -6,32 +6,29 @@ import 'package:url_shorten/presentation/pages/favorite/components/fav_shrtco_ca
 
 class FavShrtCoCard extends StatelessWidget {
   const FavShrtCoCard({
-    super.key,
     required this.shrtCoUrlModel,
+    super.key,
   });
 
   final ShrtcoFavDBModel shrtCoUrlModel;
   @override
-  Widget build(BuildContext context) {
-    // print('${shortUrlModel.shortLink} -> ${!shortUrlModel.isAlias}');
-    return Dismissible(
-      key: Key(shrtCoUrlModel.id.toString()),
-      onDismissed: (d) {
-        context
-            .read<FavoriteBloc>()
-            .add(RemoveShrtFromFavE(id: shrtCoUrlModel.id));
-      },
-      child: Card(
-        child: BlocConsumer<FavoriteBloc, FavoriteState>(
-          listener: (context, state) {},
-          builder: (context, FavoriteState state) {
-            if (state is FavoriteInitial) {
-              return FavShrtCoCardListTile(shrtCoUrlModel: shrtCoUrlModel);
-            }
-            return const SizedBox.shrink();
-          },
+  Widget build(BuildContext context) => Dismissible(
+        key: Key(shrtCoUrlModel.id.toString()),
+        onDismissed: (DismissDirection d) {
+          context
+              .read<FavoriteBloc>()
+              .add(RemoveShrtFromFavE(id: shrtCoUrlModel.id));
+        },
+        child: Card(
+          child: BlocConsumer<FavoriteBloc, FavoriteState>(
+            listener: (BuildContext context, FavoriteState state) {},
+            builder: (BuildContext context, FavoriteState state) {
+              if (state is FavoriteInitial) {
+                return FavShrtCoCardListTile(shrtCoUrlModel: shrtCoUrlModel);
+              }
+              return const SizedBox.shrink();
+            },
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
