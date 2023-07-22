@@ -6,11 +6,12 @@ class GotinyUseCase {
   GotinyRepoImpl repository = GotinyRepoImpl();
 
   /// get shorted url or erros
+  // ignore: prefer_expression_function_bodies
   Future<Result<GotinyEntity, Exception>> getShortUrl(String url) async {
     /*
     !!!If theres any business logic that needs to be done 
     !!!before returning the data, it should be done here
     */
-    return await repository.shortUrl(url);
+    return repository.shortUrl(url);
   }
 }
