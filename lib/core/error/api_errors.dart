@@ -5,28 +5,28 @@ sealed class Result<S, E extends Exception> {
 
 /// success
 class Success<S, E extends Exception> extends Result<S, E> {
-  final S data;
 
   Success(this.data);
+  final S data;
 }
 
 /// {@template failure}
 class ServerFailor<S, E extends Exception> extends Result<S, E> {
-  final E error;
 
   ServerFailor(this.error);
+  final E error;
 }
 
 /// rate limit
 class RateLimitFailor<S, E extends Exception> extends Result<S, E> {
-  final E error;
 
   RateLimitFailor(this.error);
+  final E error;
 }
 
 /// ip block
 class IpBlockFailor<S, E extends Exception> extends Result<S, E> {
-  final E error;
 
   IpBlockFailor(this.error);
+  final E error;
 }
