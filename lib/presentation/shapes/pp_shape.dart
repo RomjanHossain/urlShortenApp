@@ -1,314 +1,592 @@
+// ignore_for_file: cascade_invocations
+
 import 'package:flutter/rendering.dart';
 
 //Copy this CustomPainter code to the Bottom of the File
 class PrivacyPolicyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Path path_0 = Path();
-    path_0.moveTo(size.width * 0.8945466, 0);
-    path_0.lineTo(size.width * 0.2479150, 0);
+    final Path path_0 = Path();
+    path_0.moveTo(size.width * 0.9666667, size.height * 0.8666667);
+    path_0.lineTo(size.width * 0.8166667, size.height * 0.8666667);
+    path_0.lineTo(size.width * 0.8166667, size.height * 0.1000000);
     path_0.cubicTo(
-        size.width * 0.1917935,
-        0,
-        size.width * 0.1461336,
-        size.height * 0.04523077,
-        size.width * 0.1461336,
-        size.height * 0.1006457);
-    path_0.lineTo(size.width * 0.1419696, size.height * 0.6700405);
-    path_0.lineTo(size.width * 0.01577530, size.height * 0.6700405);
-    path_0.cubicTo(size.width * 0.006831984, size.height * 0.6700405, 0,
-        size.height * 0.6779474, 0, size.height * 0.6868907);
-    path_0.lineTo(0, size.height * 0.7652530);
+      size.width * 0.8166667,
+      size.height * 0.05400000,
+      size.width * 0.7793333,
+      size.height * 0.01666667,
+      size.width * 0.7333333,
+      size.height * 0.01666667,
+    );
+    path_0.lineTo(size.width * 0.1000000, size.height * 0.01666667);
     path_0.cubicTo(
-        0,
-        size.height * 0.8386093,
-        size.width * 0.05870445,
-        size.height * 0.8986032,
-        size.width * 0.1295547,
-        size.height * 0.9018927);
-    path_0.lineTo(size.width * 0.1295547, size.height * 0.9028340);
-    path_0.lineTo(size.width * 0.6740891, size.height * 0.9028340);
-    path_0.lineTo(size.width * 0.6740891, size.height * 0.9017753);
+      size.width * 0.05383333,
+      size.height * 0.01683333,
+      size.width * 0.01666667,
+      size.height * 0.05400000,
+      size.width * 0.01666667,
+      size.height * 0.1000000,
+    );
+    path_0.lineTo(size.width * 0.01666667, size.height * 0.1666667);
     path_0.cubicTo(
-        size.width * 0.6781377,
-        size.height * 0.9019413,
-        size.width * 0.6805870,
-        size.height * 0.9028340,
-        size.width * 0.6833725,
-        size.height * 0.9028340);
-    path_0.lineTo(size.width * 0.6837591, size.height * 0.9028340);
+      size.width * 0.01666667,
+      size.height * 0.1758333,
+      size.width * 0.02416667,
+      size.height * 0.1833333,
+      size.width * 0.03333333,
+      size.height * 0.1833333,
+    );
+    path_0.lineTo(size.width * 0.1833333, size.height * 0.1833333);
+    path_0.lineTo(size.width * 0.1833333, size.height * 0.9000000);
     path_0.cubicTo(
-        size.width * 0.7593219,
-        size.height * 0.9023907,
-        size.width * 0.8202328,
-        size.height * 0.8407996,
-        size.width * 0.8198381,
-        size.height * 0.7652368);
-    path_0.lineTo(size.width * 0.8198381, size.height * 0.2672065);
-    path_0.lineTo(size.width * 0.9842247, size.height * 0.2672065);
-    path_0.cubicTo(size.width * 0.9931680, size.height * 0.2672065, size.width,
-        size.height * 0.2591093, size.width, size.height * 0.2501741);
-    path_0.lineTo(size.width, size.height * 0.1063947);
+      size.width * 0.1833333,
+      size.height * 0.9460000,
+      size.width * 0.2166667,
+      size.height * 0.9833333,
+      size.width * 0.2666667,
+      size.height * 0.9833333,
+    );
+    path_0.lineTo(size.width * 0.9000000, size.height * 0.9833333);
     path_0.cubicTo(
-        size.width * 1.000101,
-        size.height * 0.04795547,
-        size.width * 0.9529818,
-        size.height * 0.0004190283,
-        size.width * 0.8945466,
-        0);
+      size.width * 0.9460000,
+      size.height * 0.9833333,
+      size.width * 0.9833333,
+      size.height * 0.9460000,
+      size.width * 0.9833333,
+      size.height * 0.9000000,
+    );
+    path_0.lineTo(size.width * 0.9833333, size.height * 0.8833333);
+    path_0.cubicTo(
+      size.width * 0.9833333,
+      size.height * 0.8741667,
+      size.width * 0.9758333,
+      size.height * 0.8666667,
+      size.width * 0.9666667,
+      size.height * 0.8666667,
+    );
     path_0.close();
-    path_0.moveTo(size.width * 0.1366397, size.height * 0.8704453);
-    path_0.lineTo(size.width * 0.1365283, size.height * 0.8704453);
-    path_0.cubicTo(
-        size.width * 0.07892308,
-        size.height * 0.8704453,
-        size.width * 0.03238866,
-        size.height * 0.8228340,
-        size.width * 0.03238866,
-        size.height * 0.7652368);
-    path_0.lineTo(size.width * 0.03238866, size.height * 0.7024291);
-    path_0.lineTo(size.width * 0.5465587, size.height * 0.7024291);
-    path_0.lineTo(size.width * 0.5465587, size.height * 0.7649696);
-    path_0.arcToPoint(Offset(size.width * 0.5865709, size.height * 0.8622287),
-        radius:
-            Radius.elliptical(size.width * 0.1370628, size.height * 0.1370628),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_0.cubicTo(
-        size.width * 0.5893057,
-        size.height * 0.8649818,
-        size.width * 0.5921680,
-        size.height * 0.8663968,
-        size.width * 0.5950931,
-        size.height * 0.8704453);
-    path_0.close();
-    path_0.moveTo(size.width * 0.7874494, size.height * 0.7652227);
-    path_0.cubicTo(
-        size.width * 0.7874494,
-        size.height * 0.8228340,
-        size.width * 0.7413644,
-        size.height * 0.8704453,
-        size.width * 0.6837368,
-        size.height * 0.8704453);
-    path_0.lineTo(size.width * 0.6834049, size.height * 0.8704453);
-    path_0.cubicTo(
-        size.width * 0.6254899,
-        size.height * 0.8700263,
-        size.width * 0.5788138,
-        size.height * 0.8228907,
-        size.width * 0.5789474,
-        size.height * 0.7649757);
-    path_0.lineTo(size.width * 0.5789474, size.height * 0.6868907);
-    path_0.arcToPoint(Offset(size.width * 0.5627530, size.height * 0.6700405),
-        radius: Radius.elliptical(
-            size.width * 0.01677530, size.height * 0.01677530),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_0.lineTo(size.width * 0.1743583, size.height * 0.6700405);
-    path_0.lineTo(size.width * 0.1785223, size.height * 0.1007551);
-    path_0.cubicTo(
-        size.width * 0.1785243,
-        size.height * 0.06309312,
-        size.width * 0.2096478,
-        size.height * 0.03238866,
-        size.width * 0.2479150,
-        size.height * 0.03238866);
-    path_0.lineTo(size.width * 0.8180931, size.height * 0.03238866);
-    path_0.cubicTo(
-        size.width * 0.7996356,
-        size.height * 0.05263158,
-        size.width * 0.7874494,
-        size.height * 0.07824291,
-        size.width * 0.7874494,
-        size.height * 0.1068279);
-    path_0.close();
-    path_0.moveTo(size.width * 0.9676113, size.height * 0.1066802);
-    path_0.lineTo(size.width * 0.9676113, size.height * 0.2348178);
-    path_0.lineTo(size.width * 0.8198381, size.height * 0.2348178);
-    path_0.lineTo(size.width * 0.8198381, size.height * 0.1067976);
-    path_0.cubicTo(
-        size.width * 0.8198381,
-        size.height * 0.06626316,
-        size.width * 0.8535547,
-        size.height * 0.03238866,
-        size.width * 0.8940729,
-        size.height * 0.03238866);
-    path_0.lineTo(size.width * 0.8945243, size.height * 0.03238866);
-    path_0.cubicTo(
-        size.width * 0.9351437,
-        size.height * 0.03279352,
-        size.width * 0.9678016,
-        size.height * 0.06593117,
-        size.width * 0.9676113,
-        size.height * 0.1065587);
-    path_0.close();
-    path_0.moveTo(size.width * 0.9676113, size.height * 0.1066802);
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Color.fromARGB(255, 255, 255, 255).withOpacity(1.0);
-    canvas.drawPath(path_0, paint_0_fill);
+    final Paint paint0Fill = Paint()..style = PaintingStyle.fill;
+    paint0Fill.color = const Color(0xffc9eff4).withOpacity(1);
+    canvas.drawPath(path_0, paint0Fill);
 
-    Path path_1 = Path();
-    path_1.moveTo(size.width * 0.3802733, size.height * 0.3986113);
-    path_1.lineTo(size.width * 0.4637692, size.height * 0.4556964);
-    path_1.arcToPoint(Offset(size.width * 0.4818684, size.height * 0.4556964),
-        radius: Radius.elliptical(
-            size.width * 0.01594534, size.height * 0.01594534),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_1.lineTo(size.width * 0.5651093, size.height * 0.3986275);
+    final Path path_1 = Path();
+    path_1.moveTo(size.width * 0.9833333, size.height * 0.8833333);
+    path_1.lineTo(size.width * 0.9833333, size.height * 0.9000000);
     path_1.cubicTo(
-        size.width * 0.5940283,
-        size.height * 0.3788988,
-        size.width * 0.6153846,
-        size.height * 0.3376518,
-        size.width * 0.6153846,
-        size.height * 0.3026781);
-    path_1.lineTo(size.width * 0.6153846, size.height * 0.1871862);
-    path_1.arcToPoint(Offset(size.width * 0.6067490, size.height * 0.1726437),
-        radius: Radius.elliptical(
-            size.width * 0.01582996, size.height * 0.01582996),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_1.lineTo(size.width * 0.4796235, size.height * 0.1101134);
-    path_1.arcToPoint(Offset(size.width * 0.4654676, size.height * 0.1101134),
-        radius: Radius.elliptical(
-            size.width * 0.01591093, size.height * 0.01591093),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_1.lineTo(size.width * 0.3385789, size.height * 0.1724696);
-    path_1.arcToPoint(Offset(size.width * 0.3299595, size.height * 0.1870101),
-        radius: Radius.elliptical(
-            size.width * 0.01580364, size.height * 0.01580364),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_1.lineTo(size.width * 0.3299595, size.height * 0.3026781);
+      size.width * 0.9833333,
+      size.height * 0.9460000,
+      size.width * 0.9460000,
+      size.height * 0.9833333,
+      size.width * 0.9000000,
+      size.height * 0.9833333,
+    );
+    path_1.lineTo(size.width * 0.2666667, size.height * 0.9833333);
     path_1.cubicTo(
-        size.width * 0.3299595,
-        size.height * 0.3376538,
-        size.width * 0.3513644,
-        size.height * 0.3788988,
-        size.width * 0.3802733,
-        size.height * 0.3986113);
+      size.width * 0.2693333,
+      size.height * 0.9833333,
+      size.width * 0.2721667,
+      size.height * 0.9833333,
+      size.width * 0.2748333,
+      size.height * 0.9830000,
+    );
+    path_1.cubicTo(
+      size.width * 0.3181667,
+      size.height * 0.9788333,
+      size.width * 0.3500000,
+      size.height * 0.9400000,
+      size.width * 0.3500000,
+      size.height * 0.8965000,
+    );
+    path_1.lineTo(size.width * 0.3500000, size.height * 0.8833333);
+    path_1.cubicTo(
+      size.width * 0.3500000,
+      size.height * 0.8741667,
+      size.width * 0.3575000,
+      size.height * 0.8666667,
+      size.width * 0.3666667,
+      size.height * 0.8666667,
+    );
+    path_1.lineTo(size.width * 0.9666667, size.height * 0.8666667);
+    path_1.cubicTo(
+      size.width * 0.9758333,
+      size.height * 0.8666667,
+      size.width * 0.9833333,
+      size.height * 0.8741667,
+      size.width * 0.9833333,
+      size.height * 0.8833333,
+    );
     path_1.close();
-    path_1.moveTo(size.width * 0.3623482, size.height * 0.1971154);
-    path_1.lineTo(size.width * 0.4726721, size.height * 0.1426822);
-    path_1.lineTo(size.width * 0.5829960, size.height * 0.1972632);
-    path_1.lineTo(size.width * 0.5829960, size.height * 0.3026761);
+    path_1.moveTo(size.width * 0.1833333, size.height * 0.1035000);
+    path_1.lineTo(size.width * 0.1833333, size.height * 0.1833333);
+    path_1.lineTo(size.width * 0.03333333, size.height * 0.1833333);
     path_1.cubicTo(
-        size.width * 0.5829960,
-        size.height * 0.3270709,
-        size.width * 0.5670081,
-        size.height * 0.3581012,
-        size.width * 0.5468360,
-        size.height * 0.3718502);
-    path_1.lineTo(size.width * 0.4724838, size.height * 0.4227024);
-    path_1.lineTo(size.width * 0.3984211, size.height * 0.3718623);
+      size.width * 0.02416667,
+      size.height * 0.1833333,
+      size.width * 0.01666667,
+      size.height * 0.1758333,
+      size.width * 0.01666667,
+      size.height * 0.1666667,
+    );
+    path_1.lineTo(size.width * 0.01666667, size.height * 0.1000000);
     path_1.cubicTo(
-        size.width * 0.3782490,
-        size.height * 0.3580972,
-        size.width * 0.3623482,
-        size.height * 0.3270749,
-        size.width * 0.3623482,
-        size.height * 0.3026802);
+      size.width * 0.01666667,
+      size.height * 0.05400000,
+      size.width * 0.05383333,
+      size.height * 0.01683333,
+      size.width * 0.1000000,
+      size.height * 0.01666667,
+    );
+    path_1.lineTo(size.width * 0.1001667, size.height * 0.01666667);
+    path_1.cubicTo(
+      size.width * 0.1028333,
+      size.height * 0.01666667,
+      size.width * 0.1055000,
+      size.height * 0.01666667,
+      size.width * 0.1081667,
+      size.height * 0.01700000,
+    );
+    path_1.cubicTo(
+      size.width * 0.1515000,
+      size.height * 0.02116667,
+      size.width * 0.1833333,
+      size.height * 0.06000000,
+      size.width * 0.1833333,
+      size.height * 0.1035000,
+    );
     path_1.close();
-    path_1.moveTo(size.width * 0.3623482, size.height * 0.1971154);
 
-    Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    paint_1_fill.color = Color(0xff000000).withOpacity(1.0);
-    canvas.drawPath(path_1, paint_1_fill);
+    final Paint paint1Fill = Paint()..style = PaintingStyle.fill;
+    paint1Fill.color = const Color(0xffaad3d6).withOpacity(1);
+    canvas.drawPath(path_1, paint1Fill);
 
-    Path path_2 = Path();
-    path_2.moveTo(size.width * 0.4452814, size.height * 0.3271296);
-    path_2.arcToPoint(Offset(size.width * 0.4567470, size.height * 0.3319838),
-        radius: Radius.elliptical(
-            size.width * 0.01617206, size.height * 0.01617206),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.lineTo(size.width * 0.4567874, size.height * 0.3319838);
-    path_2.arcToPoint(Offset(size.width * 0.4682368, size.height * 0.3271923),
-        radius: Radius.elliptical(
-            size.width * 0.01621457, size.height * 0.01621457),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.lineTo(size.width * 0.5326579, size.height * 0.2627470);
-    path_2.arcToPoint(Offset(size.width * 0.5326660, size.height * 0.2398320),
-        radius: Radius.elliptical(
-            size.width * 0.01620040, size.height * 0.01620040),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
+    final Path path_2 = Path();
+    path_2.moveTo(size.width * 0.6098833, size.height * 0.1391167);
+    path_2.arcToPoint(
+      Offset(size.width * 0.6166667, size.height * 0.1460333),
+      radius: Radius.elliptical(
+        size.width * 0.006933333,
+        size.height * 0.006933333,
+      ),
+    );
+    path_2.lineTo(size.width * 0.6166667, size.height * 0.1819167);
     path_2.cubicTo(
-        size.width * 0.5263482,
-        size.height * 0.2334960,
-        size.width * 0.5160830,
-        size.height * 0.2334960,
-        size.width * 0.5097571,
-        size.height * 0.2398239);
-    path_2.lineTo(size.width * 0.4568421, size.height * 0.2927308);
-    path_2.lineTo(size.width * 0.4356883, size.height * 0.2713745);
-    path_2.arcToPoint(Offset(size.width * 0.4127733, size.height * 0.2712713),
-        radius: Radius.elliptical(
-            size.width * 0.01620040, size.height * 0.01620040),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.arcToPoint(Offset(size.width * 0.4126721, size.height * 0.2941862),
-        radius: Radius.elliptical(
-            size.width * 0.01620850, size.height * 0.01620850),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
+      size.width * 0.6166667,
+      size.height * 0.3285833,
+      size.width * 0.5230833,
+      size.height * 0.3610167,
+      size.width * 0.5035500,
+      size.height * 0.3662000,
+    );
+    path_2.arcToPoint(
+      Offset(size.width * 0.4964500, size.height * 0.3662000),
+      radius: Radius.elliptical(
+        size.width * 0.01385000,
+        size.height * 0.01385000,
+      ),
+    );
+    path_2.cubicTo(
+      size.width * 0.4769167,
+      size.height * 0.3610333,
+      size.width * 0.3833333,
+      size.height * 0.3285833,
+      size.width * 0.3833333,
+      size.height * 0.1819167,
+    );
+    path_2.lineTo(size.width * 0.3833333, size.height * 0.1460333);
+    path_2.cubicTo(
+      size.width * 0.3833333,
+      size.height * 0.1422500,
+      size.width * 0.3863667,
+      size.height * 0.1392167,
+      size.width * 0.3901167,
+      size.height * 0.1391167,
+    );
+    path_2.cubicTo(
+      size.width * 0.4533000,
+      size.height * 0.1374833,
+      size.width * 0.4842500,
+      size.height * 0.1132000,
+      size.width * 0.4952167,
+      size.height * 0.1020333,
+    );
+    path_2.arcToPoint(
+      Offset(size.width * 0.5048000, size.height * 0.1020333),
+      radius: Radius.elliptical(
+        size.width * 0.006666667,
+        size.height * 0.006666667,
+      ),
+    );
+    path_2.cubicTo(
+      size.width * 0.5157500,
+      size.height * 0.1132000,
+      size.width * 0.5467167,
+      size.height * 0.1374833,
+      size.width * 0.6099000,
+      size.height * 0.1391167,
+    );
     path_2.close();
-    path_2.moveTo(size.width * 0.6740891, size.height * 0.5020243);
-    path_2.lineTo(size.width * 0.2854251, size.height * 0.5020243);
-    path_2.arcToPoint(Offset(size.width * 0.2854251, size.height * 0.5344130),
-        radius: Radius.elliptical(
-            size.width * 0.01619433, size.height * 0.01619433),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.lineTo(size.width * 0.6740891, size.height * 0.5344130);
-    path_2.arcToPoint(Offset(size.width * 0.6740891, size.height * 0.5020243),
-        radius: Radius.elliptical(
-            size.width * 0.01619433, size.height * 0.01619433),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.close();
-    path_2.moveTo(size.width * 0.6740891, size.height * 0.5769231);
-    path_2.lineTo(size.width * 0.2854251, size.height * 0.5769231);
-    path_2.arcToPoint(Offset(size.width * 0.2854251, size.height * 0.6093117),
-        radius: Radius.elliptical(
-            size.width * 0.01619433, size.height * 0.01619433),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.lineTo(size.width * 0.6740891, size.height * 0.6093117);
-    path_2.arcToPoint(Offset(size.width * 0.6740891, size.height * 0.5769231),
-        radius: Radius.elliptical(
-            size.width * 0.01619433, size.height * 0.01619433),
-        rotation: 0,
-        largeArc: false,
-        clockwise: false);
-    path_2.close();
-    path_2.moveTo(size.width * 0.6740891, size.height * 0.5769231);
 
-    Paint paint_2_fill = Paint()..style = PaintingStyle.fill;
-    paint_2_fill.color = Color(0xff000000).withOpacity(1.0);
-    canvas.drawPath(path_2, paint_2_fill);
+    final Paint paint2Fill = Paint()..style = PaintingStyle.fill;
+    paint2Fill.color = const Color(0xff39bc71).withOpacity(1);
+    canvas.drawPath(path_2, paint2Fill);
+
+    final Path path_3 = Path();
+    path_3.moveTo(size.width * 0.7166667, size.height * 0.8000000);
+    path_3.cubicTo(
+      size.width * 0.6649833,
+      size.height * 0.8000000,
+      size.width * 0.6359667,
+      size.height * 0.7821500,
+      size.width * 0.6126667,
+      size.height * 0.7677833,
+    );
+    path_3.cubicTo(
+      size.width * 0.5965167,
+      size.height * 0.7578333,
+      size.width * 0.5837833,
+      size.height * 0.7500000,
+      size.width * 0.5666667,
+      size.height * 0.7500000,
+    );
+    path_3.cubicTo(
+      size.width * 0.5496667,
+      size.height * 0.7500000,
+      size.width * 0.5413000,
+      size.height * 0.7572667,
+      size.width * 0.5286167,
+      size.height * 0.7682500,
+    );
+    path_3.cubicTo(
+      size.width * 0.5122833,
+      size.height * 0.7824000,
+      size.width * 0.4919500,
+      size.height * 0.8000000,
+      size.width * 0.4500000,
+      size.height * 0.8000000,
+    );
+    path_3.arcToPoint(
+      Offset(size.width * 0.4024000, size.height * 0.7907167),
+      radius:
+          Radius.elliptical(size.width * 0.1243667, size.height * 0.1243667),
+    );
+    path_3.arcToPoint(
+      Offset(size.width * 0.3666667, size.height * 0.8000000),
+      radius: Radius.elliptical(
+        size.width * 0.07648333,
+        size.height * 0.07648333,
+      ),
+    );
+    path_3.cubicTo(
+      size.width * 0.3298167,
+      size.height * 0.8000000,
+      size.width * 0.2940667,
+      size.height * 0.7823167,
+      size.width * 0.2925500,
+      size.height * 0.7815833,
+    );
+    path_3.arcToPoint(
+      Offset(size.width * 0.3074500, size.height * 0.7517500),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+    );
+    path_3.cubicTo(
+      size.width * 0.3077500,
+      size.height * 0.7519167,
+      size.width * 0.3388333,
+      size.height * 0.7678500,
+      size.width * 0.3681667,
+      size.height * 0.7666500,
+    );
+    path_3.cubicTo(
+      size.width * 0.3569333,
+      size.height * 0.7536667,
+      size.width * 0.3500167,
+      size.height * 0.7369667,
+      size.width * 0.3500167,
+      size.height * 0.7166833,
+    );
+    path_3.cubicTo(
+      size.width * 0.3500167,
+      size.height * 0.6729167,
+      size.width * 0.3751667,
+      size.height * 0.6500167,
+      size.width * 0.4000167,
+      size.height * 0.6500167,
+    );
+    path_3.cubicTo(
+      size.width * 0.4248667,
+      size.height * 0.6500167,
+      size.width * 0.4500167,
+      size.height * 0.6729167,
+      size.width * 0.4500167,
+      size.height * 0.7166833,
+    );
+    path_3.cubicTo(
+      size.width * 0.4500167,
+      size.height * 0.7340167,
+      size.width * 0.4434000,
+      size.height * 0.7509667,
+      size.width * 0.4326500,
+      size.height * 0.7649833,
+    );
+    path_3.cubicTo(
+      size.width * 0.4389833,
+      size.height * 0.7661667,
+      size.width * 0.4449833,
+      size.height * 0.7666833,
+      size.width * 0.4500167,
+      size.height * 0.7666833,
+    );
+    path_3.cubicTo(
+      size.width * 0.4795333,
+      size.height * 0.7666833,
+      size.width * 0.4921667,
+      size.height * 0.7557333,
+      size.width * 0.5068000,
+      size.height * 0.7430667,
+    );
+    path_3.cubicTo(
+      size.width * 0.5210667,
+      size.height * 0.7307000,
+      size.width * 0.5372667,
+      size.height * 0.7166833,
+      size.width * 0.5666833,
+      size.height * 0.7166833,
+    );
+    path_3.cubicTo(
+      size.width * 0.5932333,
+      size.height * 0.7166833,
+      size.width * 0.6120000,
+      size.height * 0.7282333,
+      size.width * 0.6301667,
+      size.height * 0.7394167,
+    );
+    path_3.cubicTo(
+      size.width * 0.6519500,
+      size.height * 0.7528167,
+      size.width * 0.6744500,
+      size.height * 0.7666833,
+      size.width * 0.7166833,
+      size.height * 0.7666833,
+    );
+    path_3.arcToPoint(
+      Offset(size.width * 0.7166833, size.height * 0.8000167),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+      largeArc: true,
+    );
+    path_3.close();
+    path_3.moveTo(size.width * 0.4000000, size.height * 0.6833333);
+    path_3.cubicTo(
+      size.width * 0.3919333,
+      size.height * 0.6833333,
+      size.width * 0.3833333,
+      size.height * 0.6950167,
+      size.width * 0.3833333,
+      size.height * 0.7166667,
+    );
+    path_3.cubicTo(
+      size.width * 0.3833333,
+      size.height * 0.7325000,
+      size.width * 0.3903167,
+      size.height * 0.7436667,
+      size.width * 0.4001833,
+      size.height * 0.7513667,
+    );
+    path_3.cubicTo(
+      size.width * 0.4099667,
+      size.height * 0.7418500,
+      size.width * 0.4166667,
+      size.height * 0.7290667,
+      size.width * 0.4166667,
+      size.height * 0.7166667,
+    );
+    path_3.cubicTo(
+      size.width * 0.4166667,
+      size.height * 0.6950167,
+      size.width * 0.4080667,
+      size.height * 0.6833333,
+      size.width * 0.4000000,
+      size.height * 0.6833333,
+    );
+    path_3.close();
+
+    final Paint paint3Fill = Paint()..style = PaintingStyle.fill;
+    paint3Fill.color = const Color(0xff293b6d).withOpacity(1);
+    canvas.drawPath(path_3, paint3Fill);
+
+    final Path path_4 = Path();
+    path_4.moveTo(size.width * 0.7333333, size.height * 0.4833333);
+    path_4.lineTo(size.width * 0.2666667, size.height * 0.4833333);
+    path_4.arcToPoint(
+      Offset(size.width * 0.2666667, size.height * 0.4500000),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+      largeArc: true,
+    );
+    path_4.lineTo(size.width * 0.7333333, size.height * 0.4500000);
+    path_4.arcToPoint(
+      Offset(size.width * 0.7333333, size.height * 0.4833333),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+      largeArc: true,
+    );
+    path_4.close();
+    path_4.moveTo(size.width * 0.7333333, size.height * 0.5833333);
+    path_4.lineTo(size.width * 0.2666667, size.height * 0.5833333);
+    path_4.arcToPoint(
+      Offset(size.width * 0.2666667, size.height * 0.5500000),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+      largeArc: true,
+    );
+    path_4.lineTo(size.width * 0.7333333, size.height * 0.5500000);
+    path_4.arcToPoint(
+      Offset(size.width * 0.7333333, size.height * 0.5833333),
+      radius: Radius.elliptical(
+        size.width * 0.01666667,
+        size.height * 0.01666667,
+      ),
+      largeArc: true,
+    );
+    path_4.close();
+
+    final Paint paint4Fill = Paint()..style = PaintingStyle.fill;
+    paint4Fill.color = const Color(0xff91c0c1).withOpacity(1);
+    canvas.drawPath(path_4, paint4Fill);
+
+    final Path path_5 = Path();
+    path_5.moveTo(size.width * 0.5000167, size.height * 0.3833333);
+    path_5.cubicTo(
+      size.width * 0.4973667,
+      size.height * 0.3833333,
+      size.width * 0.4947000,
+      size.height * 0.3829833,
+      size.width * 0.4920833,
+      size.height * 0.3822833,
+    );
+    path_5.cubicTo(
+      size.width * 0.4712167,
+      size.height * 0.3767667,
+      size.width * 0.3666667,
+      size.height * 0.3409833,
+      size.width * 0.3666667,
+      size.height * 0.1819333,
+    );
+    path_5.lineTo(size.width * 0.3666667, size.height * 0.1460500);
+    path_5.cubicTo(
+      size.width * 0.3666667,
+      size.height * 0.1331667,
+      size.width * 0.3767667,
+      size.height * 0.1228000,
+      size.width * 0.3896833,
+      size.height * 0.1224667,
+    );
+    path_5.cubicTo(
+      size.width * 0.4472167,
+      size.height * 0.1209833,
+      size.width * 0.4743333,
+      size.height * 0.09953333,
+      size.width * 0.4833167,
+      size.height * 0.09036667,
+    );
+    path_5.cubicTo(
+      size.width * 0.4922000,
+      size.height * 0.08131667,
+      size.width * 0.5078000,
+      size.height * 0.08131667,
+      size.width * 0.5166833,
+      size.height * 0.09036667,
+    );
+    path_5.cubicTo(
+      size.width * 0.5256667,
+      size.height * 0.09953333,
+      size.width * 0.5527833,
+      size.height * 0.1209833,
+      size.width * 0.6103000,
+      size.height * 0.1224667,
+    );
+    path_5.arcToPoint(
+      Offset(size.width * 0.6333167, size.height * 0.1460500),
+      radius: Radius.elliptical(
+        size.width * 0.02350000,
+        size.height * 0.02350000,
+      ),
+    );
+    path_5.lineTo(size.width * 0.6333167, size.height * 0.1819333);
+    path_5.cubicTo(
+      size.width * 0.6333167,
+      size.height * 0.3410000,
+      size.width * 0.5287667,
+      size.height * 0.3767667,
+      size.width * 0.5078000,
+      size.height * 0.3823167,
+    );
+    path_5.cubicTo(
+      size.width * 0.5052833,
+      size.height * 0.3830000,
+      size.width * 0.5026333,
+      size.height * 0.3833500,
+      size.width * 0.5000000,
+      size.height * 0.3833500,
+    );
+    path_5.close();
+    path_5.moveTo(size.width * 0.4000000, size.height * 0.1553500);
+    path_5.lineTo(size.width * 0.4000000, size.height * 0.1819167);
+    path_5.cubicTo(
+      size.width * 0.4000000,
+      size.height * 0.3165667,
+      size.width * 0.4839000,
+      size.height * 0.3456167,
+      size.width * 0.5007167,
+      size.height * 0.3500833,
+    );
+    path_5.cubicTo(
+      size.width * 0.5161000,
+      size.height * 0.3456167,
+      size.width * 0.6000000,
+      size.height * 0.3165667,
+      size.width * 0.6000000,
+      size.height * 0.1819167,
+    );
+    path_5.lineTo(size.width * 0.6000000, size.height * 0.1553500);
+    path_5.cubicTo(
+      size.width * 0.5467500,
+      size.height * 0.1520333,
+      size.width * 0.5153833,
+      size.height * 0.1330333,
+      size.width * 0.5000000,
+      size.height * 0.1202167,
+    );
+    path_5.cubicTo(
+      size.width * 0.4846333,
+      size.height * 0.1330500,
+      size.width * 0.4532500,
+      size.height * 0.1520333,
+      size.width * 0.4000000,
+      size.height * 0.1553500,
+    );
+    path_5.close();
+    path_5.moveTo(size.width * 0.6094000, size.height * 0.1557667);
+    path_5.lineTo(size.width * 0.6094333, size.height * 0.1557667);
+    path_5.close();
+
+    final Paint paint5Fill = Paint()..style = PaintingStyle.fill;
+    paint5Fill.color = const Color(0xffffffff).withOpacity(1);
+    canvas.drawPath(path_5, paint5Fill);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
