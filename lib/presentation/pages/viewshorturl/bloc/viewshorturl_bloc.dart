@@ -1,10 +1,16 @@
+// ignore_for_file: always_specify_types
+
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_shorten/core/error/api_errors.dart';
 import 'package:url_shorten/core/error/exception_msg.dart';
+import 'package:url_shorten/domain/entities/cleanuri_entities.dart';
 import 'package:url_shorten/domain/entities/error_entities.dart';
+import 'package:url_shorten/domain/entities/gotiny_entities.dart';
+import 'package:url_shorten/domain/entities/shrtco_entities.dart';
+import 'package:url_shorten/domain/entities/ulvis_entities.dart';
 import 'package:url_shorten/domain/usecases/cleanuri_usecase.dart';
 import 'package:url_shorten/domain/usecases/gotiny_usecase.dart';
 import 'package:url_shorten/domain/usecases/shrtco_usecase.dart';
@@ -28,24 +34,29 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
 
   /// calling the free apis
   FutureOr<void> _onFreeApiCall(event, emit) async {
+    // ignore: avoid_dynamic_calls
     emit(const ViewshorturlLoading());
 
     /// free short url api
-    List<Object> freeShortUrls = [];
+    final List<Object> freeShortUrls = [];
 
     /// check internet connection
 
-    final connectivityResult = await (Connectivity().checkConnectivity());
+    final ConnectivityResult connectivityResult =
+        await Connectivity().checkConnectivity();
 
     /// if no internet connection
     if (connectivityResult == ConnectivityResult.none) {
+      // ignore: avoid_dynamic_calls
       emit(const ConnectionError());
       return;
     }
 
     ///! shrtco api
-    ShrtCOUrlUseCase shrtCOUrlUseCase = ShrtCOUrlUseCase();
-    final shrtcoResult = await shrtCOUrlUseCase.getShortUrl(event.url);
+    final ShrtCOUrlUseCase shrtCOUrlUseCase = ShrtCOUrlUseCase();
+    final Result<ShrtcoEntity, Exception> shrtcoResult =
+        // ignore: avoid_dynamic_calls
+        await shrtCOUrlUseCase.getShortUrl(event.url.toString());
 
     switch (shrtcoResult) {
       case Success(data: final shrtcoEntity):
@@ -53,15 +64,18 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
         break;
       case ServerFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'),
+        );
         break;
       case RateLimitFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'),
+        );
         break;
       case IpBlockFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'ShrtCo'),
+        );
         break;
       default:
         // Handle other cases if needed
@@ -69,24 +83,38 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
     }
 
     /// cleanuri api
-    CleanUriUseCase cleanUriUseCase = CleanUriUseCase();
-    final cleanUriresult = await cleanUriUseCase.getShortUrl(event.url);
+    final CleanUriUseCase cleanUriUseCase = CleanUriUseCase();
+    final Result<CleanUriEntities, Exception> cleanUriresult =
+        // ignore: avoid_dynamic_calls
+        await cleanUriUseCase.getShortUrl(event.url.toString());
 
     switch (cleanUriresult) {
       case Success(data: final cleanUriEntity):
         freeShortUrls.add(cleanUriEntity);
         break;
       case ServerFailor(error: final exception):
-        freeShortUrls.add(ErrorModel(
-            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        freeShortUrls.add(
+          ErrorModel(
+            message: getExceptionMsg(exception),
+            domain: 'CleanUri',
+          ),
+        );
         break;
       case RateLimitFailor(error: final exception):
-        freeShortUrls.add(ErrorModel(
-            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        freeShortUrls.add(
+          ErrorModel(
+            message: getExceptionMsg(exception),
+            domain: 'CleanUri',
+          ),
+        );
         break;
       case IpBlockFailor(error: final exception):
-        freeShortUrls.add(ErrorModel(
-            message: getExceptionMsg(exception), domain: 'CleanUri'));
+        freeShortUrls.add(
+          ErrorModel(
+            message: getExceptionMsg(exception),
+            domain: 'CleanUri',
+          ),
+        );
         break;
       default:
         // Handle other cases if needed
@@ -94,8 +122,10 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
     }
 
     /// gotiny api
-    GotinyUseCase gotinyUseCase = GotinyUseCase();
-    final gotinyresult = await gotinyUseCase.getShortUrl(event.url);
+    final GotinyUseCase gotinyUseCase = GotinyUseCase();
+    final Result<GotinyEntity, Exception> gotinyresult =
+        // ignore: avoid_dynamic_calls
+        await gotinyUseCase.getShortUrl(event.url.toString());
 
     switch (gotinyresult) {
       case Success(data: final gotinyEntity):
@@ -103,15 +133,18 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
         break;
       case ServerFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'),
+        );
         break;
       case RateLimitFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'),
+        );
         break;
       case IpBlockFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Gotiny'),
+        );
         break;
       default:
         // Handle other cases if needed
@@ -119,23 +152,28 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
     }
 
     /// ulvis api
-    UlvisUseCase ulvisUseCase = UlvisUseCase();
-    final ulvisresult = await ulvisUseCase.getShortUrl(event.url);
+    final UlvisUseCase ulvisUseCase = UlvisUseCase();
+    final Result<UlvisEntity, Exception> ulvisresult =
+        // ignore: avoid_dynamic_calls
+        await ulvisUseCase.getShortUrl(event.url.toString());
     switch (ulvisresult) {
       case Success(data: final ulvisEntity):
         freeShortUrls.add(ulvisEntity);
         break;
       case ServerFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'),
+        );
         break;
       case RateLimitFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'),
+        );
         break;
       case IpBlockFailor(error: final exception):
         freeShortUrls.add(
-            ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'));
+          ErrorModel(message: getExceptionMsg(exception), domain: 'Ulvis'),
+        );
         break;
       default:
         // Handle other cases if needed
@@ -143,6 +181,7 @@ class ViewshorturlBloc extends Bloc<ViewshorturlEvent, ViewshorturlState> {
     }
 
     /// emit the sucess state
+    // ignore: avoid_dynamic_calls
     emit(ViewshorturlSuccess(freeShortUrls));
   }
 }

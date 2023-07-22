@@ -4,7 +4,7 @@ abstract class HistoryEvent extends Equatable {
   const HistoryEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// {@template custom_history_event}

@@ -1,25 +1,4 @@
 class RebrandlyEntities {
-  final String id;
-  final String title;
-  final String slashtag;
-  final String destination;
-  final String createdAt;
-  final String updatedAt;
-  final String? expiredAt;
-  final String status;
-  final List<dynamic> tags;
-  final int clicks;
-  final bool isPublic;
-  final String shortUrl;
-  final String domainId;
-  final String domainName;
-  final RebrandlyDomain domain;
-  final bool https;
-  final bool favourite;
-  final RebrandlyCreator creator;
-  final bool integrated;
-  final String shortURL;
-
   RebrandlyEntities({
     required this.id,
     required this.title,
@@ -43,39 +22,54 @@ class RebrandlyEntities {
     required this.shortURL,
   });
 
-  factory RebrandlyEntities.fromJson(Map<String, dynamic> json) {
-    return RebrandlyEntities(
-      id: json['id'],
-      title: json['title'],
-      slashtag: json['slashtag'],
-      destination: json['destination'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      expiredAt: json['expiredAt'],
-      status: json['status'],
-      tags: json['tags'],
-      clicks: json['clicks'],
-      isPublic: json['isPublic'],
-      shortUrl: json['shortUrl'],
-      domainId: json['domainId'],
-      domainName: json['domainName'],
-      domain: RebrandlyDomain.fromJson(json['domain']),
-      https: json['https'],
-      favourite: json['favourite'],
-      creator: RebrandlyCreator.fromJson(json['creator']),
-      integrated: json['integrated'],
-      shortURL: json['shortURL'],
-    );
-  }
+  factory RebrandlyEntities.fromJson(Map<String, dynamic> json) =>
+      RebrandlyEntities(
+        id: json['id'].toString(),
+        title: json['title'].toString(),
+        slashtag: json['slashtag'].toString(),
+        destination: json['destination'].toString(),
+        createdAt: json['createdAt'].toString(),
+        updatedAt: json['updatedAt'].toString(),
+        expiredAt: json['expiredAt'].toString(),
+        status: json['status'].toString(),
+        tags: json['tags'] as List<dynamic>,
+        clicks: json['clicks'] as int,
+        isPublic: json['isPublic'] as bool,
+        shortUrl: json['shortUrl'].toString(),
+        domainId: json['domainId'].toString(),
+        domainName: json['domainName'].toString(),
+        domain:
+            RebrandlyDomain.fromJson(json['domain'] as Map<String, dynamic>),
+        https: json['https'] as bool,
+        favourite: json['favourite'] as bool,
+        creator:
+            RebrandlyCreator.fromJson(json['creator'] as Map<String, dynamic>),
+        integrated: json['integrated'] as bool,
+        shortURL: json['shortURL'].toString(),
+      );
+  final String id;
+  final String title;
+  final String slashtag;
+  final String destination;
+  final String createdAt;
+  final String updatedAt;
+  final String? expiredAt;
+  final String status;
+  final List<dynamic> tags;
+  final int clicks;
+  final bool isPublic;
+  final String shortUrl;
+  final String domainId;
+  final String domainName;
+  final RebrandlyDomain domain;
+  final bool https;
+  final bool favourite;
+  final RebrandlyCreator creator;
+  final bool integrated;
+  final String shortURL;
 }
 
 class RebrandlyDomain {
-  final String id;
-  final String ref;
-  final String fullName;
-  final RebrandlySharing sharing;
-  final bool active;
-
   RebrandlyDomain({
     required this.id,
     required this.ref,
@@ -84,64 +78,64 @@ class RebrandlyDomain {
     required this.active,
   });
 
-  factory RebrandlyDomain.fromJson(Map<String, dynamic> json) {
-    return RebrandlyDomain(
-      id: json['id'],
-      ref: json['ref'],
-      fullName: json['fullName'],
-      sharing: RebrandlySharing.fromJson(json['sharing']),
-      active: json['active'],
-    );
-  }
+  factory RebrandlyDomain.fromJson(Map<String, dynamic> json) =>
+      RebrandlyDomain(
+        id: json['id'].toString(),
+        ref: json['ref'].toString(),
+        fullName: json['fullName'].toString(),
+        sharing:
+            RebrandlySharing.fromJson(json['sharing'] as Map<String, dynamic>),
+        active: json['active'] as bool,
+      );
+  final String id;
+  final String ref;
+  final String fullName;
+  final RebrandlySharing sharing;
+  final bool active;
 }
 
 class RebrandlySharing {
-  final RebrandlyProtocol protocol;
-
   RebrandlySharing({
     required this.protocol,
   });
 
-  factory RebrandlySharing.fromJson(Map<String, dynamic> json) {
-    return RebrandlySharing(
-      protocol: RebrandlyProtocol.fromJson(json['protocol']),
-    );
-  }
+  factory RebrandlySharing.fromJson(Map<String, dynamic> json) =>
+      RebrandlySharing(
+        protocol: RebrandlyProtocol.fromJson(
+            json['protocol'] as Map<String, dynamic>,),
+      );
+  final RebrandlyProtocol protocol;
 }
 
 class RebrandlyProtocol {
-  final List<dynamic> allowed;
-  final String defaultProtocol;
-
   RebrandlyProtocol({
     required this.allowed,
     required this.defaultProtocol,
   });
 
-  factory RebrandlyProtocol.fromJson(Map<String, dynamic> json) {
-    return RebrandlyProtocol(
-      allowed: json['allowed'],
-      defaultProtocol: json['default'],
-    );
-  }
+  factory RebrandlyProtocol.fromJson(Map<String, dynamic> json) =>
+      RebrandlyProtocol(
+        allowed: json['allowed'] as List<dynamic>,
+        defaultProtocol: json['default'].toString(),
+      );
+  final List<dynamic> allowed;
+  final String defaultProtocol;
 }
 
 class RebrandlyCreator {
-  final String id;
-  final String fullName;
-  final String avatarUrl;
-
   RebrandlyCreator({
     required this.id,
     required this.fullName,
     required this.avatarUrl,
   });
 
-  factory RebrandlyCreator.fromJson(Map<String, dynamic> json) {
-    return RebrandlyCreator(
-      id: json['id'],
-      fullName: json['fullName'],
-      avatarUrl: json['avatarUrl'],
-    );
-  }
+  factory RebrandlyCreator.fromJson(Map<String, dynamic> json) =>
+      RebrandlyCreator(
+        id: json['id'].toString(),
+        fullName: json['fullName'].toString(),
+        avatarUrl: json['avatarUrl'].toString(),
+      );
+  final String id;
+  final String fullName;
+  final String avatarUrl;
 }

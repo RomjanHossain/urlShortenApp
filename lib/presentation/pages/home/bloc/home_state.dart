@@ -12,18 +12,17 @@ class HomeState extends Equatable {
   /// A description for customProperty
   final String customProperty;
   @override
-  List<Object> get props => [
+  List<Object> get props => <Object>[
         customProperty,
       ];
 
   /// Creates a copy of the current HomeState with property changes
   HomeState copyWith({
     String? customProperty,
-  }) {
-    return HomeState(
-      customProperty: customProperty ?? this.customProperty,
-    );
-  }
+  }) =>
+      HomeState(
+        customProperty: customProperty ?? this.customProperty,
+      );
 }
 
 /// {@template home_initial}

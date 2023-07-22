@@ -13,16 +13,15 @@ class SettingsState extends Equatable {
   final String customProperty;
 
   @override
-  List<Object> get props => [customProperty];
+  List<Object> get props => <Object>[customProperty];
 
   /// Creates a copy of the current SettingsState with property changes
   SettingsState copyWith({
     String? customProperty,
-  }) {
-    return SettingsState(
-      customProperty: customProperty ?? this.customProperty,
-    );
-  }
+  }) =>
+      SettingsState(
+        customProperty: customProperty ?? this.customProperty,
+      );
 }
 
 /// {@template settings_initial}
