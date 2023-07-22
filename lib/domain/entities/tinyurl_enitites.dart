@@ -5,16 +5,17 @@ class TinyUrlEntities {
     this.errors,
   });
 
+  factory TinyUrlEntities.fromJson(Map<String, dynamic> json) =>
+      TinyUrlEntities(
+        data: Data.fromJson(json["data"] as Map<String, dynamic>),
+        code: json["code"] as int?,
+        // ignore: always_specify_types, avoid_dynamic_calls
+        errors: List<dynamic>.from(json["errors"].map((x) => x)),
+      );
+
   Data? data;
   int? code;
   List<dynamic>? errors;
-
-  factory TinyUrlEntities.fromJson(Map<String, dynamic> json) =>
-      TinyUrlEntities(
-        data: Data.fromJson(json["data"]),
-        code: json["code"],
-        errors: List<dynamic>.from(json["errors"].map((x) => x)),
-      );
 }
 
 class Data {
@@ -31,6 +32,21 @@ class Data {
     this.url,
   });
 
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        domain: json["domain"].toString(),
+        alias: json["alias"].toString(),
+        deleted: json["deleted"] as bool?,
+        archived: json["archived"] as bool?,
+        analytics:
+            Analytics.fromJson(json["analytics"] as Map<String, dynamic>),
+        // ignore: always_specify_types, avoid_dynamic_calls
+        tags: List<dynamic>.from(json["tags"].map((x) => x)),
+        createdAt: DateTime.parse(json["created_at"].toString()),
+        expiresAt: json["expires_at"].toString(),
+        tinyUrl: json["tiny_url"].toString(),
+        url: json["url"].toString(),
+      );
+
   String? domain;
   String? alias;
   bool? deleted;
@@ -41,19 +57,6 @@ class Data {
   dynamic expiresAt;
   String? tinyUrl;
   String? url;
-
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        domain: json["domain"],
-        alias: json["alias"],
-        deleted: json["deleted"],
-        archived: json["archived"],
-        analytics: Analytics.fromJson(json["analytics"]),
-        tags: List<dynamic>.from(json["tags"].map((x) => x)),
-        createdAt: DateTime.parse(json["created_at"]),
-        expiresAt: json["expires_at"],
-        tinyUrl: json["tiny_url"],
-        url: json["url"],
-      );
 }
 
 class Analytics {
@@ -62,11 +65,11 @@ class Analytics {
     this.public,
   });
 
+  factory Analytics.fromJson(Map<String, dynamic> json) => Analytics(
+        enabled: json["enabled"] as bool?,
+        public: json["public"] as bool?,
+      );
+
   bool? enabled;
   bool? public;
-
-  factory Analytics.fromJson(Map<String, dynamic> json) => Analytics(
-        enabled: json["enabled"],
-        public: json["public"],
-      );
 }
