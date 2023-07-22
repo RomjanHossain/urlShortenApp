@@ -4,7 +4,7 @@ abstract class SplashEvent extends Equatable {
   const SplashEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// {@template custom_splash_event}
