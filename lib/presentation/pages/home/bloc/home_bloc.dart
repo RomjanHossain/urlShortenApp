@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
@@ -38,9 +40,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _onGotoViewShortUrlPageEvent(event, emmit) async {
     await Navigator.push(
-      event.context,
+      // ignore: avoid_dynamic_calls
+      event.context as BuildContext,
       PageAnimationWrapper.sharedAxisTransitionPageWrapper(
-          const ViewshorturlPage()),
+        const ViewshorturlPage(),
+      ),
     );
   }
 }
