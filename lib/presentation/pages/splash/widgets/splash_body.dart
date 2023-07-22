@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_shorten/presentation/pages/splash/bloc/bloc.dart';
 
 /// {@template splash_body}
@@ -11,12 +12,29 @@ class SplashBody extends StatelessWidget {
   const SplashBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SplashBloc, SplashState>(
-      builder: (context, state) {
-        // context.read<HistoryBloc>().add(HistoryInitial(segmentButtonEnum: segmentButtonEnum, shortUrlsFree: shortUrlsFree, shortUrlsPR: shortUrlsPR, shrtCoUrlFree: shrtCoUrlFree))
-        return const Center(child: CircularProgressIndicator());
-      },
-    );
-  }
+  Widget build(BuildContext context) => BlocBuilder<SplashBloc, SplashState>(
+        builder: (BuildContext context, SplashState state) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Image.asset(
+                'logo/logo.png',
+                fit: BoxFit.contain,
+                width: 150,
+                height: 150,
+              ).animate().moveX(
+                    duration: 2.seconds,
+                  ),
+            ),
+            Center(
+              child: Text(
+                'URL Shortener',
+                style: Theme.of(context).textTheme.headlineLarge,
+              ).animate().moveY(
+                    duration: 3.seconds,
+                  ),
+            ),
+          ],
+        ),
+      );
 }
