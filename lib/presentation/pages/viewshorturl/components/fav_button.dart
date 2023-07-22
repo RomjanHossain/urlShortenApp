@@ -5,10 +5,10 @@ import 'package:url_shorten/presentation/pages/favorite/bloc/favorite_bloc.dart'
 
 class IsFavIconButton extends StatelessWidget {
   const IsFavIconButton({
-    super.key,
     required this.url,
     required this.domain,
     required this.originURL,
+    super.key,
   });
   final String url;
   final String domain;
@@ -16,16 +16,14 @@ class IsFavIconButton extends StatelessWidget {
   // final IsFavoriteUseCases _isFav = IsFavoriteUseCases();
 
   @override
-  Widget build(BuildContext context) {
-    // final favState = context.read<FavoriteBloc>().state;
-
-    return BlocConsumer<FavoriteBloc, FavoriteState>(
-        listener: (context, state) {},
-        builder: (context, state) {
+  Widget build(BuildContext context) =>
+      BlocConsumer<FavoriteBloc, FavoriteState>(
+        listener: (BuildContext context, FavoriteState state) {},
+        builder: (BuildContext context, FavoriteState state) {
           if (state is FavoriteInitial) {
-            final isFav = state.shortUrlsFree.any((element) {
-              return element.shortLink == url;
-            });
+            final bool isFav = state.shortUrlsFree.any(
+              (ShortUrlFavContainerDBModel element) => element.shortLink == url,
+            );
             return Align(
               alignment: Alignment.topRight,
               child: IconButton.outlined(
@@ -33,8 +31,11 @@ class IsFavIconButton extends StatelessWidget {
                   // state.shortUrlsFree.forEach((e) => print(e.shortLink));
 
                   if (isFav) {
-                    ShortUrlFavContainerDBModel d = state.shortUrlsFree
-                        .where((element) => element.shortLink == url)
+                    final ShortUrlFavContainerDBModel d = state.shortUrlsFree
+                        .where(
+                          (ShortUrlFavContainerDBModel element) =>
+                              element.shortLink == url,
+                        )
                         .first;
                     context.read<FavoriteBloc>().add(
                           RemoveFromFavE(
@@ -42,12 +43,15 @@ class IsFavIconButton extends StatelessWidget {
                           ),
                         );
                   } else {
-                    context.read<FavoriteBloc>().add(AddToFavE(
-                        shortUrlFavContainerDBModel:
-                            ShortUrlFavContainerDBModel()
-                              ..domain = domain
-                              ..originalLink = originURL
-                              ..shortLink = url));
+                    context.read<FavoriteBloc>().add(
+                          AddToFavE(
+                            shortUrlFavContainerDBModel:
+                                ShortUrlFavContainerDBModel()
+                                  ..domain = domain
+                                  ..originalLink = originURL
+                                  ..shortLink = url,
+                          ),
+                        );
                   }
                 },
                 icon: isFav
@@ -57,8 +61,6 @@ class IsFavIconButton extends StatelessWidget {
             );
           }
           return const SizedBox.shrink();
-        });
-
-    // return const SizedBox.shrink();
-  }
+        },
+      );
 }

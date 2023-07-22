@@ -7,11 +7,14 @@ class RebrandlyUseCase {
 
   /// get shorted url or erros
   Future<Result<RebrandlyEntities, Exception>> getShortUrl(
-      String url, String custom) async {
+    String url,
+    String custom,
+    // ignore: prefer_expression_function_bodies
+  ) async {
     /*
     !!!If theres any business logic that needs to be done 
     !!!before returning the data, it should be done here
     */
-    return await repository.shortUrl(url, custom);
+    return repository.shortUrl(url, custom);
   }
 }

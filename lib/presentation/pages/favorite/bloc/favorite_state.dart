@@ -11,23 +11,23 @@ class FavoriteState extends Equatable {
   final String customProperty;
 
   @override
-  List<Object> get props => [customProperty];
+  List<Object> get props => <Object>[customProperty];
 
   /// Creates a copy of the current FavoriteState with property changes
   FavoriteState copyWith({
     String? customProperty,
-  }) {
-    return FavoriteState(
-      customProperty: customProperty ?? this.customProperty,
-    );
-  }
+  }) =>
+      FavoriteState(
+        customProperty: customProperty ?? this.customProperty,
+      );
 }
 
 /// The initial state of FavoriteState
 class FavoriteInitial extends FavoriteState {
-  const FavoriteInitial(
-      {required this.shortUrlsFree, required this.shrtCoUrlFree})
-      : super();
+  const FavoriteInitial({
+    required this.shortUrlsFree,
+    required this.shrtCoUrlFree,
+  }) : super();
 
   /// list of short urls (from local DB)
   final List<ShortUrlFavContainerDBModel> shortUrlsFree;
@@ -36,5 +36,5 @@ class FavoriteInitial extends FavoriteState {
   final List<ShrtcoFavDBModel> shrtCoUrlFree;
 
   @override
-  List<Object> get props => [shortUrlsFree, shrtCoUrlFree];
+  List<Object> get props => <Object>[shortUrlsFree, shrtCoUrlFree];
 }

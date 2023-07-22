@@ -9,7 +9,6 @@ part 'settings_event.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  final ShortDBImplementation _shortDBImplementation = ShortDBImplementation();
   SettingsBloc() : super(const SettingsInitial()) {
     on<CustomSettingsEvent>(_onCustomSettingsEvent);
     on<DeleteAllHistoryE>(_onDeleteAllHistory);
@@ -17,6 +16,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     on<ViewRepoE>(_onViewRepo);
     on<ViewAuthorE>(_onViewAuthor);
   }
+  final ShortDBImplementation _shortDBImplementation = ShortDBImplementation();
 
   FutureOr<void> _onCustomSettingsEvent(
     CustomSettingsEvent event,

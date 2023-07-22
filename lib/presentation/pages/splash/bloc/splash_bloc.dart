@@ -19,7 +19,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     Emitter<SplashState> emit,
   ) async {
     // wait for 3 seconds
-    await Future.delayed(const Duration(seconds: 3));
+    await Future<dynamic>.delayed(const Duration(seconds: 3));
     if (event.context.mounted) {
       // ignore: use_build_context_synchronously
       await Navigator.push(

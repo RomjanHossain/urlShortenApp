@@ -7,7 +7,7 @@ class ViewshorturlState extends Equatable {
   const ViewshorturlState();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// The initial state of ViewshorturlState
@@ -19,7 +19,7 @@ class ViewshorturlInitial extends ViewshorturlState {
   /// main url
   final String url;
   @override
-  List<Object> get props => [url];
+  List<Object> get props => <Object>[url];
 }
 
 /// loading state (free)
@@ -36,7 +36,7 @@ class ViewshorturlError extends ViewshorturlState {
   /// error message
   final String message;
   @override
-  List<Object> get props => [message];
+  List<Object> get props => <Object>[message];
 }
 
 /// No Internet
@@ -53,5 +53,5 @@ class ViewshorturlSuccess extends ViewshorturlState {
   /// error short urls
   final List<Object> furls;
   @override
-  List<Object> get props => [furls];
+  List<Object> get props => <Object>[furls];
 }

@@ -5,13 +5,13 @@ class UlvisEntity {
     required this.data,
   });
 
+  factory UlvisEntity.fromJson(Map<String, dynamic> json) => UlvisEntity(
+        success: json["success"] as bool,
+        data: UlvisDataEntity.fromJson(json["data"] as Map<String, dynamic>),
+      );
+
   bool success;
   UlvisDataEntity data;
-
-  factory UlvisEntity.fromJson(Map<String, dynamic> json) => UlvisEntity(
-        success: json["success"],
-        data: UlvisDataEntity.fromJson(json["data"]),
-      );
 }
 
 /// data entity
@@ -22,14 +22,14 @@ class UlvisDataEntity {
     required this.full,
   });
 
+  factory UlvisDataEntity.fromJson(Map<String, dynamic> json) =>
+      UlvisDataEntity(
+        id: json["id"].toString(),
+        url: json["url"].toString(),
+        full: json["full"].toString(),
+      );
+
   String id;
   String url;
   String full;
-
-  factory UlvisDataEntity.fromJson(Map<String, dynamic> json) =>
-      UlvisDataEntity(
-        id: json["id"],
-        url: json["url"],
-        full: json["full"],
-      );
 }

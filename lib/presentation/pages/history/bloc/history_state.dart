@@ -4,7 +4,7 @@ part of 'history_bloc.dart';
 
 class HistoryState extends Equatable {
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// {@template history_initial}
@@ -26,7 +26,7 @@ class HistoryInitial extends HistoryState {
   final List<ShrtcoDBModel> shrtCoUrlFree;
 
   @override
-  List<Object> get props => [
+  List<Object> get props => <Object>[
         segmentButtonEnum,
         shortUrlsFree,
       ];

@@ -3,15 +3,13 @@ import 'package:url_shorten/domain/entities/error_entities.dart';
 
 class ErrorCard extends StatelessWidget {
   const ErrorCard({
-    super.key,
-    required this.errorMode,
+    required this.errorMode, super.key,
   });
 
   /// error entity
   final ErrorModel errorMode;
   @override
-  Widget build(BuildContext context) {
-    return Card(
+  Widget build(BuildContext context) => Card(
       child: ListTile(
         title: Text(errorMode.domain),
         subtitle: Center(
@@ -26,5 +24,4 @@ class ErrorCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }

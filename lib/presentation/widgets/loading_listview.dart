@@ -7,13 +7,11 @@ class LoadingListView extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return ScrollConfiguration(
+  Widget build(BuildContext context) => ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: ListView.builder(
         itemCount: 4,
-        itemBuilder: (context, index) {
-          return SizedBox(
+        itemBuilder: (BuildContext context, int index) => SizedBox(
             height: 200,
             child: const Card(
               margin: EdgeInsets.all(8),
@@ -23,7 +21,7 @@ class LoadingListView extends StatelessWidget {
               ),
             )
                 .animate(
-                  onPlay: (controller) => controller.repeat(),
+                  onPlay: (AnimationController controller) => controller.repeat(),
                 )
                 .shimmer(
                   delay: 500.milliseconds,
@@ -32,9 +30,7 @@ class LoadingListView extends StatelessWidget {
                   curve: Curves.easeIn,
                   duration: 800.milliseconds,
                 ),
-          );
-        },
+          ),
       ),
     );
-  }
 }

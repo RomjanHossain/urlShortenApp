@@ -4,7 +4,7 @@ abstract class ViewshorturlprEvent extends Equatable {
   const ViewshorturlprEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// {@template custom_viewshorturlpr_event}

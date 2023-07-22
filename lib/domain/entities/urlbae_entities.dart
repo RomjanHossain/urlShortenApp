@@ -5,15 +5,13 @@ class UrlBaeEntity {
     required this.error,
   });
 
+  factory UrlBaeEntity.fromJson(Map<String, dynamic> json) => UrlBaeEntity(
+        id: json['id'].toString(),
+        shortUrl: json['shorturl'].toString(),
+        error: json['error'] as int?,
+      );
+
   final String? id;
   final String? shortUrl;
   final int? error;
-
-  factory UrlBaeEntity.fromJson(Map<String, dynamic> json) {
-    return UrlBaeEntity(
-      id: json['id'],
-      shortUrl: json['shorturl'],
-      error: json['error'],
-    );
-  }
 }

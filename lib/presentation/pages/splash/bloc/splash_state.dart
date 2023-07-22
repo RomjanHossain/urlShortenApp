@@ -13,16 +13,15 @@ class SplashState extends Equatable {
   final String customProperty;
 
   @override
-  List<Object> get props => [customProperty];
+  List<Object> get props => <Object>[customProperty];
 
   /// Creates a copy of the current SplashState with property changes
   SplashState copyWith({
     String? customProperty,
-  }) {
-    return SplashState(
-      customProperty: customProperty ?? this.customProperty,
-    );
-  }
+  }) =>
+      SplashState(
+        customProperty: customProperty ?? this.customProperty,
+      );
 }
 
 /// {@template splash_initial}

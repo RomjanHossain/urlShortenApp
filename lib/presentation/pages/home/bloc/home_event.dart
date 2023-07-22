@@ -4,7 +4,7 @@ abstract class HomeEvent extends Equatable {
   const HomeEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// Event added when some custom logic happens

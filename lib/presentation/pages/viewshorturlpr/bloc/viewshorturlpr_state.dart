@@ -8,7 +8,7 @@ class ViewshorturlprState extends Equatable {
   const ViewshorturlprState();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 /// {@template viewshorturlpr_initial}
@@ -33,7 +33,7 @@ class ViewshorturlPremiumError extends ViewshorturlprState {
   /// error message
   final String message;
   @override
-  List<Object> get props => [message];
+  List<Object> get props => <Object>[message];
 }
 
 /// No Internet
@@ -50,5 +50,5 @@ class ViewshorturlPremiumSuccess extends ViewshorturlprState {
   /// error short urls
   final List<Object> surls;
   @override
-  List<Object> get props => [surls];
+  List<Object> get props => <Object>[surls];
 }

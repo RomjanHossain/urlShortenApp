@@ -16,30 +16,29 @@ class FavoriteBody extends StatelessWidget {
   const FavoriteBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteBloc, FavoriteState>(
-      builder: (context, state) {
-        if (state is FavoriteInitial) {
-          return ScrollConfiguration(
-            behavior:
-                ScrollConfiguration.of(context).copyWith(scrollbars: false),
-            child: ListView(
-              children: [
-                for (ShrtcoFavDBModel shrtUrlModel in state.shrtCoUrlFree)
-                  FavShrtCoCard(
-                    shrtCoUrlModel: shrtUrlModel,
-                  ),
-                for (ShortUrlFavContainerDBModel shortUrlModel
-                    in state.shortUrlsFree)
-                  FavCard(
-                    shortUrlModel: shortUrlModel,
-                  ),
-              ],
-            ),
-          );
-        }
-        return Center(child: Text(state.customProperty));
-      },
-    );
-  }
+  Widget build(BuildContext context) =>
+      BlocBuilder<FavoriteBloc, FavoriteState>(
+        builder: (BuildContext context, FavoriteState state) {
+          if (state is FavoriteInitial) {
+            return ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: ListView(
+                children: <Widget>[
+                  for (ShrtcoFavDBModel shrtUrlModel in state.shrtCoUrlFree)
+                    FavShrtCoCard(
+                      shrtCoUrlModel: shrtUrlModel,
+                    ),
+                  for (ShortUrlFavContainerDBModel shortUrlModel
+                      in state.shortUrlsFree)
+                    FavCard(
+                      shortUrlModel: shortUrlModel,
+                    ),
+                ],
+              ),
+            );
+          }
+          return Center(child: Text(state.customProperty));
+        },
+      );
 }

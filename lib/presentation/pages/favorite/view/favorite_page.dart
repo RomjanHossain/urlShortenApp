@@ -8,7 +8,5 @@ class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const FavoriteBody();
-  }
+  Widget build(BuildContext context) => const FavoriteBody();
 }

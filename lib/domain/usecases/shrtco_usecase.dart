@@ -9,11 +9,11 @@ class ShrtCOUrlUseCase {
 
   /// get list of free short url or erros
   Future<Result<ShrtcoEntity, Exception>> getShortUrl(String url) async {
-    ShortUrlRepoImpl repository = ShortUrlRepoImpl();
+    final ShortUrlRepoImpl repository = ShortUrlRepoImpl();
     /*
     !!!If theres any business logic that needs to be done 
     !!!before returning the data, it should be done here
     */
-    return await repository.freeShortUrl(url);
+    return repository.freeShortUrl(url);
   }
 }

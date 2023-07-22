@@ -19,58 +19,55 @@ class ViewshorturlPage extends StatelessWidget {
   // final String url;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('View Short Url'),
-      ),
-      body: const ViewshorturlView(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: OpenContainer(
-        closedBuilder: (context, openBuilder) {
-          return FloatingActionButton.extended(
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text('View Short Url'),
+        ),
+        body: const ViewshorturlView(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: OpenContainer(
+          // ignore: always_specify_types
+          closedBuilder: (BuildContext context, openBuilder) =>
+              FloatingActionButton.extended(
             onPressed: () async {
-              var homeState = context.read<HomeBloc>().state;
+              final HomeState homeState = context.read<HomeBloc>().state;
               if (homeState is HomeInitial) {
                 // print('current home state ${_homeState.urlController.text}');
                 /// a dialog box and a text field for custom url
                 await showDialog(
                   context: context,
-                  builder: (BuildContext context) {
-                    return CustomAlertDialog(
-                      onPressed: openBuilder,
-                      originURL: homeState.urlController.text,
-                    );
-                  },
+                  builder: (BuildContext context) => CustomAlertDialog(
+                    onPressed: openBuilder,
+                    originURL: homeState.urlController.text,
+                  ),
                 );
               }
             },
             label: const Text('Custom Alias Shorten URL'),
-          );
-        },
-        openShape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(5),
           ),
-        ),
-        closedShape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-        ),
-        closedColor: Theme.of(context).colorScheme.primaryContainer.withOpacity(
-              0.3,
+          openShape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(5),
             ),
-        openColor: Theme.of(context).colorScheme.primaryContainer,
-        closedElevation: 0,
-        middleColor: Theme.of(context).colorScheme.primaryContainer,
-        transitionDuration: 800.milliseconds,
-        openBuilder: (context, closeBuilder) {
-          return const ViewshorturlprPage();
-        },
-      ),
-    );
-  }
+          ),
+          closedShape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+          closedColor:
+              Theme.of(context).colorScheme.primaryContainer.withOpacity(
+                    0.3,
+                  ),
+          openColor: Theme.of(context).colorScheme.primaryContainer,
+          closedElevation: 0,
+          middleColor: Theme.of(context).colorScheme.primaryContainer,
+          transitionDuration: 800.milliseconds,
+          // ignore: always_specify_types
+          openBuilder: (BuildContext context, closeBuilder) =>
+              const ViewshorturlprPage(),
+        ),
+      );
 }
 
 /// Displays the Body of ViewshorturlView
@@ -79,7 +76,5 @@ class ViewshorturlView extends StatelessWidget {
   const ViewshorturlView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const ViewshorturlBody();
-  }
+  Widget build(BuildContext context) => const ViewshorturlBody();
 }
