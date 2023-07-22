@@ -10,10 +10,8 @@ class HomeFloatingActionBtn extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return ThemeSwitcher.withTheme(
-      builder: (_, ThemeSwitcherState switcher, ThemeData theme) {
-        return FloatingActionButton(
+  Widget build(BuildContext context) => ThemeSwitcher.withTheme(
+      builder: (_, ThemeSwitcherState switcher, ThemeData theme) => FloatingActionButton(
           shape: const CircleBorder(),
           onPressed: () => switcher.changeTheme(
             theme: theme.brightness == Brightness.light
@@ -25,8 +23,6 @@ class HomeFloatingActionBtn extends StatelessWidget {
                 ? Icons.brightness_low_rounded
                 : Icons.brightness_high_rounded,
           ),
-        );
-      },
+        ),
     );
-  }
 }

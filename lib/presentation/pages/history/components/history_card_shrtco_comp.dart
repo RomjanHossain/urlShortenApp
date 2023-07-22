@@ -6,32 +6,31 @@ import 'package:url_shorten/presentation/pages/history/components/history_shrtco
 
 class HistoryShrtCoCard extends StatelessWidget {
   const HistoryShrtCoCard({
-    super.key,
     required this.shrtCoUrlModel,
+    super.key,
   });
 
   final ShrtcoDBModel shrtCoUrlModel;
   @override
-  Widget build(BuildContext context) {
-    // print('${shortUrlModel.shortLink} -> ${!shortUrlModel.isAlias}');
-    return Dismissible(
-      onDismissed: (d) {
-        BlocProvider.of<HistoryBloc>(context).add(
-          DeleteShrtCoUrlE(shrtCoUrlModel),
-        );
-      },
-      key: Key(shrtCoUrlModel.id.toString()),
-      child: Card(
-        child: BlocConsumer<HistoryBloc, HistoryState>(
-          listener: (context, state) {},
-          builder: (context, HistoryState state) {
-            if (state is HistoryInitial) {
-              return HistoryShrtCoCardListTile(shrtCoUrlModel: shrtCoUrlModel);
-            }
-            return const SizedBox.shrink();
-          },
+  Widget build(BuildContext context) => Dismissible(
+        onDismissed: (DismissDirection d) {
+          BlocProvider.of<HistoryBloc>(context).add(
+            DeleteShrtCoUrlE(shrtCoUrlModel),
+          );
+        },
+        key: Key(shrtCoUrlModel.id.toString()),
+        child: Card(
+          child: BlocConsumer<HistoryBloc, HistoryState>(
+            listener: (BuildContext context, HistoryState state) {},
+            builder: (BuildContext context, HistoryState state) {
+              if (state is HistoryInitial) {
+                return HistoryShrtCoCardListTile(
+                  shrtCoUrlModel: shrtCoUrlModel,
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

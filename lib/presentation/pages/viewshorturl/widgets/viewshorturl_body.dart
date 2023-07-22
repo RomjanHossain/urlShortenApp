@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/bloc/bloc.dart';
-import 'package:url_shorten/presentation/widgets/loading_listview.dart';
 import 'package:url_shorten/presentation/pages/viewshorturl/widgets/shorturl_card_listview.dart';
+import 'package:url_shorten/presentation/widgets/loading_listview.dart';
 
 /// {@template viewshorturl_body}
 /// Body of the ViewshorturlPage.
@@ -13,15 +13,14 @@ class ViewshorturlBody extends StatelessWidget {
   const ViewshorturlBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ViewshorturlBloc, ViewshorturlState>(
-      builder: (context, state) {
+  Widget build(BuildContext context) => BlocBuilder<ViewshorturlBloc, ViewshorturlState>(
+      builder: (BuildContext context, ViewshorturlState state) {
         if (state is ViewshorturlInitial) {
           return Center(
               child: Text(
             state.url,
             textAlign: TextAlign.center,
-          ));
+          ),);
         }
         if (state is ViewshorturlLoading) {
           // return const Center(child: CircularProgressIndicator());
@@ -49,5 +48,4 @@ class ViewshorturlBody extends StatelessWidget {
         return const Center(child: Text('Nothing to show'));
       },
     );
-  }
 }

@@ -3,16 +3,14 @@ import 'package:url_shorten/presentation/pages/viewshorturl/components/copy_icon
 
 class ShrtcoSmllCard extends StatelessWidget {
   const ShrtcoSmllCard({
-    super.key,
-    required this.txt,
+    required this.txt, super.key,
   });
 
   /// txt
   final String txt;
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
+  Widget build(BuildContext context) => Card(
       color: Theme.of(context).colorScheme.tertiaryContainer,
       child: ListTile(
         title: Text(
@@ -22,5 +20,4 @@ class ShrtcoSmllCard extends StatelessWidget {
         trailing: CopyIconBtn(txt: txt),
       ),
     );
-  }
 }

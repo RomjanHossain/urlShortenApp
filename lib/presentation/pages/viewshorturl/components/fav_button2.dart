@@ -5,12 +5,7 @@ import 'package:url_shorten/presentation/pages/favorite/bloc/favorite_bloc.dart'
 
 class IsFavIconButton2 extends StatelessWidget {
   const IsFavIconButton2({
-    super.key,
-    required this.url1,
-    required this.url2,
-    required this.url3,
-    required this.domain,
-    required this.originURL,
+    required this.url1, required this.url2, required this.url3, required this.domain, required this.originURL, super.key,
   });
   final String url1;
   final String url2;
@@ -20,26 +15,21 @@ class IsFavIconButton2 extends StatelessWidget {
   // final IsFavoriteUseCases _isFav = IsFavoriteUseCases();
 
   @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<FavoriteBloc, FavoriteState>(
-      listener: (context, state) {},
-      builder: (context, state) {
+  Widget build(BuildContext context) => BlocConsumer<FavoriteBloc, FavoriteState>(
+      listener: (BuildContext context, FavoriteState state) {},
+      builder: (BuildContext context, FavoriteState state) {
         if (state is FavoriteInitial) {
-          final isFav2 = state.shrtCoUrlFree.any((element) {
-            return (element.shrtLink1 == url1) ||
+          final bool isFav2 = state.shrtCoUrlFree.any((ShrtcoFavDBModel element) => (element.shrtLink1 == url1) ||
                 (element.shrtLink2 == url2) ||
-                (element.shrtLink3 == url3);
-          });
+                (element.shrtLink3 == url3),);
           return Align(
             alignment: Alignment.topRight,
             child: IconButton.outlined(
               onPressed: () {
                 if (isFav2) {
-                  ShrtcoFavDBModel d = state.shrtCoUrlFree.where((element) {
-                    return (element.shrtLink1 == url1) ||
+                  final ShrtcoFavDBModel d = state.shrtCoUrlFree.where((ShrtcoFavDBModel element) => (element.shrtLink1 == url1) ||
                         (element.shrtLink2 == url2) ||
-                        (element.shrtLink3 == url3);
-                  }).first;
+                        (element.shrtLink3 == url3),).first;
                   context.read<FavoriteBloc>().add(
                         RemoveShrtFromFavE(
                           id: d.id,
@@ -52,7 +42,7 @@ class IsFavIconButton2 extends StatelessWidget {
                               ..originalLink = originURL
                               ..shrtLink1 = url1
                               ..shrtLink2 = url2
-                              ..shrtLink3 = url3),
+                              ..shrtLink3 = url3,),
                       );
                 }
               },
@@ -65,5 +55,4 @@ class IsFavIconButton2 extends StatelessWidget {
         return const SizedBox.shrink();
       },
     );
-  }
 }
