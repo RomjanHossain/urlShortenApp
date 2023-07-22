@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:url_shorten/core/params/history_page_params.dart';
 import 'package:url_shorten/core/params/home_page_params.dart';
 import 'package:url_shorten/presentation/pages/favorite/bloc/bloc.dart';
+import 'package:url_shorten/presentation/pages/history/bloc/history_bloc.dart';
 import 'package:url_shorten/presentation/pages/home/bloc/home_bloc.dart';
-
-import '../../history/bloc/history_bloc.dart';
 
 /// home page bottom navigation bar
 class HomeBottomNav extends StatelessWidget {
@@ -15,8 +14,8 @@ class HomeBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    HomeState state = context.watch<HomeBloc>().state;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final HomeState state = context.watch<HomeBloc>().state;
     return AnimatedBottomNavigationBar(
       activeIndex: state is HomeInitial
           ? 0
@@ -32,13 +31,13 @@ class HomeBottomNav extends StatelessWidget {
       blurEffect: true,
       hideAnimationCurve: Curves.easeOut,
       elevation: 0,
-      icons: const [
+      icons: const <IconData>[
         Icons.home_rounded,
         Icons.favorite_rounded,
         Icons.history_rounded,
         Icons.settings_rounded,
       ],
-      onTap: (x) {
+      onTap: (int x) {
         if (x == 1) {
           context.read<FavoriteBloc>().add(const CustomFavoriteEvent());
         }
