@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_shorten/data/models/shorturl_container_db_model.dart';
@@ -6,14 +8,15 @@ import 'package:url_shorten/data/models/shrtco_db_model.dart';
 import 'package:url_shorten/data/models/shrtco_fav_db_model.dart';
 
 class ShortDBImplementation {
-  late Future<Isar> db;
   ShortDBImplementation() {
+    // ignore: discarded_futures
     db = openIsar();
   }
+  late Future<Isar> db;
 
   /// insert data to db
   Future<void> insertShortUrl(ShortUrlContainerDBModel shortUrl) async {
-    final isar = await db;
+    final Isar isar = await db;
     isar.writeTxnSync<int>(
       () => isar.shortUrlContainerDBModels.putSync(
         shortUrl,
@@ -23,8 +26,9 @@ class ShortDBImplementation {
 
   /// check if the url exists
   Future<bool> checkIfUrlExists(String url) async {
-    final isar = await db;
-    final data = await isar.shortUrlFavContainerDBModels
+    final Isar isar = await db;
+    final List<ShortUrlFavContainerDBModel> data = await isar
+        .shortUrlFavContainerDBModels
         .where()
         .filter()
         .shortLinkEqualTo(url)
@@ -37,14 +41,14 @@ class ShortDBImplementation {
 
   /// remove data from db
   Future<void> removeShortUrl(int id) async {
-    final isar = await db;
+    final Isar isar = await db;
     await isar.writeTxn(() => isar.shortUrlContainerDBModels.delete(id));
     // await isar.shortUrlContainerDBModels.delete(id);
   }
 
   /// get all data from db
   Future<List<ShortUrlContainerDBModel>> getAllShortUrl() async {
-    final isar = await db;
+    final Isar isar = await db;
     // return isar.shortUrlContainerDBModels.where().findAll();
     /// return sort by createdAt
     return isar.shortUrlContainerDBModels
@@ -56,7 +60,7 @@ class ShortDBImplementation {
   ///! shrt co url start
   /// insert data to db
   Future<void> insertShrCotUrl(ShrtcoDBModel shortUrl) async {
-    final isar = await db;
+    final Isar isar = await db;
     isar.writeTxnSync<int>(
       () => isar.shrtcoDBModels.putSync(
         shortUrl,
@@ -66,8 +70,8 @@ class ShortDBImplementation {
 
   /// check if the shrtco url exists
   Future<bool> checkIfShrtCoUrlExists(String url) async {
-    final isar = await db;
-    final data = await isar.shrtcoFavDBModels
+    final Isar isar = await db;
+    final List<ShrtcoFavDBModel> data = await isar.shrtcoFavDBModels
         .where()
         .filter()
         .originalLinkEqualTo(url)
@@ -80,14 +84,14 @@ class ShortDBImplementation {
 
   /// remove data from db
   Future<void> removeShrtCoUrl(int id) async {
-    final isar = await db;
+    final Isar isar = await db;
     await isar.writeTxn(() => isar.shrtcoDBModels.delete(id));
     // await isar.shrtcoDBModels.delete(id);
   }
 
   /// get all data from db
   Future<List<ShrtcoDBModel>> getAllShrtCoUrl() async {
-    final isar = await db;
+    final Isar isar = await db;
     return isar.shrtcoDBModels.where().sortByCreationDateDesc().findAll();
   }
 
@@ -97,7 +101,7 @@ class ShortDBImplementation {
   ///! shrt co url start FAV
   /// insert data to db
   Future<void> insertShrCotUrlFAV(ShrtcoFavDBModel shortUrl) async {
-    final isar = await db;
+    final Isar isar = await db;
     isar.writeTxnSync<int>(
       () => isar.shrtcoFavDBModels.putSync(
         shortUrl,
@@ -107,21 +111,21 @@ class ShortDBImplementation {
 
   /// remove data from db
   Future<void> removeShrtCoUrlFAV(int id) async {
-    final isar = await db;
+    final Isar isar = await db;
     await isar.writeTxn(() => isar.shrtcoFavDBModels.delete(id));
     // await isar.shrtcoFavDBModels.delete(id);
   }
 
   /// get all data from db
   Future<List<ShrtcoFavDBModel>> getAllShrtCoUrlFAV() async {
-    final isar = await db;
+    final Isar isar = await db;
     return isar.shrtcoFavDBModels.where().sortByCreationDateDesc().findAll();
   }
 
   ///! END
   /// insert data to db
   Future<void> insertShortUrlFAV(ShortUrlFavContainerDBModel shortUrl) async {
-    final isar = await db;
+    final Isar isar = await db;
     isar.writeTxnSync<int>(
       () => isar.shortUrlFavContainerDBModels.putSync(
         shortUrl,
@@ -131,7 +135,7 @@ class ShortDBImplementation {
 
   /// remove data from db
   Future<void> removeShortUrlFAV(int id) async {
-    final isar = await db;
+    final Isar isar = await db;
     // await isar.writeTxn(() {
     //   isar.shortUrlFavContainerDBModels.delete(id);
     // });
@@ -140,7 +144,7 @@ class ShortDBImplementation {
 
   /// get all data from db
   Future<List<ShortUrlFavContainerDBModel>> getAllShortUrlFAV() async {
-    final isar = await db;
+    final Isar isar = await db;
     // return isar.shortUrlContainerDBModels.where().findAll();
     /// return sort by createdAt
     return isar.shortUrlFavContainerDBModels
@@ -151,7 +155,7 @@ class ShortDBImplementation {
 
   /// remove all history
   Future<void> removeAllHistory() async {
-    final isar = await db;
+    final Isar isar = await db;
     final List<ShortUrlContainerDBModel> allHistory = await isar
         .shortUrlContainerDBModels
         .where()
@@ -161,12 +165,12 @@ class ShortDBImplementation {
         await isar.shrtcoDBModels.where().sortByCreationDateDesc().findAll();
 
     /// remove all history
-    for (ShortUrlContainerDBModel history in allHistory) {
+    for (final ShortUrlContainerDBModel history in allHistory) {
       await isar.writeTxn(
         () => isar.shortUrlContainerDBModels.delete(history.id),
       );
     }
-    for (ShrtcoDBModel history in allHistoryShrt) {
+    for (final ShrtcoDBModel history in allHistoryShrt) {
       await isar.writeTxn(
         () => isar.shrtcoDBModels.delete(history.id),
       );
@@ -175,7 +179,7 @@ class ShortDBImplementation {
 
   /// remove all fav
   Future<void> removeAllFav() async {
-    final isar = await db;
+    final Isar isar = await db;
     final List<ShortUrlFavContainerDBModel> allFav = await isar
         .shortUrlFavContainerDBModels
         .where()
@@ -185,12 +189,12 @@ class ShortDBImplementation {
         await isar.shrtcoFavDBModels.where().sortByCreationDateDesc().findAll();
 
     /// remove all fav
-    for (ShortUrlFavContainerDBModel fav in allFav) {
+    for (final ShortUrlFavContainerDBModel fav in allFav) {
       await isar.writeTxn(
         () => isar.shortUrlFavContainerDBModels.delete(fav.id),
       );
     }
-    for (ShrtcoFavDBModel fav in allFavShrt) {
+    for (final ShrtcoFavDBModel fav in allFavShrt) {
       await isar.writeTxn(
         () => isar.shrtcoFavDBModels.delete(fav.id),
       );
@@ -199,15 +203,18 @@ class ShortDBImplementation {
 
   /// open the db
   Future<Isar> openIsar() async {
-    final dir = await getApplicationDocumentsDirectory();
+    final Directory dir = await getApplicationDocumentsDirectory();
     if (Isar.instanceNames.isEmpty) {
-      return await Isar.open([
-        ShortUrlContainerDBModelSchema,
-        ShrtcoDBModelSchema,
-        ShortUrlFavContainerDBModelSchema,
-        ShrtcoFavDBModelSchema
-      ], directory: dir.path);
+      return Isar.open(
+        <CollectionSchema<dynamic>>[
+          ShortUrlContainerDBModelSchema,
+          ShrtcoDBModelSchema,
+          ShortUrlFavContainerDBModelSchema,
+          ShrtcoFavDBModelSchema
+        ],
+        directory: dir.path,
+      );
     }
-    return Future.value(Isar.getInstance());
+    return Future<Isar>.value(Isar.getInstance());
   }
 }
