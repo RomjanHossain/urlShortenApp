@@ -16,7 +16,7 @@ void main() {
       test('can be instantiated', () {
         expect(
           const CustomViewshorturlEvent(),
-          isNotNull
+          isNotNull,
         );
       });
     });

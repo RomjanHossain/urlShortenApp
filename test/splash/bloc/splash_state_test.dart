@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const splashState = SplashState(
+          const SplashState splashState = SplashState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const splashState = SplashState(
+          const SplashState splashState = SplashState(
             customProperty: 'My property',
           );
-          final otherSplashState = SplashState(
+          final SplashState otherSplashState = SplashState(
             customProperty: 'My property 2',
           );
           expect(splashState, isNot(equals(otherSplashState)));

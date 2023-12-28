@@ -16,14 +16,14 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final homeBloc = HomeBloc();
+      final HomeBloc homeBloc = HomeBloc();
       expect(homeBloc.state.customProperty, equals('Default Value'));
     });
 
     blocTest<HomeBloc, HomeState>(
       'CustomHomeEvent emits nothing',
       build: HomeBloc.new,
-      act: (bloc) => bloc.add(ChangePageEvent(1)),
+      act: (HomeBloc bloc) => bloc.add(ChangePageEvent(1)),
       expect: () => <HomeState>[],
     );
   });

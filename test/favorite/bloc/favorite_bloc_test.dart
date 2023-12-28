@@ -16,14 +16,14 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final favoriteBloc = FavoriteBloc();
+      final FavoriteBloc favoriteBloc = FavoriteBloc();
       expect(favoriteBloc.state.customProperty, equals('Default Value'));
     });
 
     blocTest<FavoriteBloc, FavoriteState>(
       'CustomFavoriteEvent emits nothing',
       build: FavoriteBloc.new,
-      act: (bloc) => bloc.add(const CustomFavoriteEvent()),
+      act: (FavoriteBloc bloc) => bloc.add(const CustomFavoriteEvent()),
       expect: () => <FavoriteState>[],
     );
   });

@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const homeState = HomeState(
+          const HomeState homeState = HomeState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const homeState = HomeState(
+          const HomeState homeState = HomeState(
             customProperty: 'My property',
           );
-          final otherHomeState = HomeState(
+          final HomeState otherHomeState = HomeState(
             customProperty: 'My property 2',
           );
           expect(homeState, isNot(equals(otherHomeState)));

@@ -16,14 +16,14 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final historyBloc = HistoryBloc();
+      final HistoryBloc historyBloc = HistoryBloc();
       expect(historyBloc.state.customProperty, equals('Default Value'));
     });
 
     blocTest<HistoryBloc, HistoryState>(
       'CustomHistoryEvent emits nothing',
       build: HistoryBloc.new,
-      act: (bloc) => bloc.add(const CustomHistoryEvent()),
+      act: (HistoryBloc bloc) => bloc.add(const CustomHistoryEvent()),
       expect: () => <HistoryState>[],
     );
   });

@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const settingsState = SettingsState(
+          const SettingsState settingsState = SettingsState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const settingsState = SettingsState(
+          const SettingsState settingsState = SettingsState(
             customProperty: 'My property',
           );
-          final otherSettingsState = SettingsState(
+          final SettingsState otherSettingsState = SettingsState(
             customProperty: 'My property 2',
           );
           expect(settingsState, isNot(equals(otherSettingsState)));

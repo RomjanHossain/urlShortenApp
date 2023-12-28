@@ -15,7 +15,7 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final splashBloc = SplashBloc();
+      final SplashBloc splashBloc = SplashBloc();
       expect(splashBloc.state.customProperty, equals('Default Value'));
     });
 

@@ -16,14 +16,14 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final viewshorturlprBloc = ViewshorturlprBloc();
+      final ViewshorturlprBloc viewshorturlprBloc = ViewshorturlprBloc();
       // expect(viewshorturlprBloc.state.customProperty, equals('Default Value'));
     });
 
     blocTest<ViewshorturlprBloc, ViewshorturlprState>(
       'CustomViewshorturlprEvent emits nothing',
       build: ViewshorturlprBloc.new,
-      act: (bloc) => bloc.add(const CustomViewshorturlprEvent()),
+      act: (ViewshorturlprBloc bloc) => bloc.add(const CustomViewshorturlprEvent()),
       expect: () => <ViewshorturlprState>[],
     );
   });

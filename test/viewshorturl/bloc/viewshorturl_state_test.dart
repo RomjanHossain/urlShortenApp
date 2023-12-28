@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const viewshorturlState = ViewshorturlState(
+          const ViewshorturlState viewshorturlState = ViewshorturlState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const viewshorturlState = ViewshorturlState(
+          const ViewshorturlState viewshorturlState = ViewshorturlState(
             customProperty: 'My property',
           );
-          final otherViewshorturlState = ViewshorturlState(
+          final ViewshorturlState otherViewshorturlState = ViewshorturlState(
             customProperty: 'My property 2',
           );
           expect(viewshorturlState, isNot(equals(otherViewshorturlState)));

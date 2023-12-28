@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:url_shorten/presentation/pages/splash/splash.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:url_shorten/presentation/pages/splash/splash.dart';
 
 void main() {
   group('SplashPage', () {
@@ -12,7 +12,7 @@ void main() {
       });
     });
 
-    testWidgets('renders SplashView', (tester) async {
+    testWidgets('renders SplashView', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(home: SplashPage()));
       expect(find.byType(SplashView), findsOneWidget);
     });

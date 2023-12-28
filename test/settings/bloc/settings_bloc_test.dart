@@ -16,14 +16,14 @@ void main() {
     });
 
     test('initial state has default value for customProperty', () {
-      final settingsBloc = SettingsBloc();
+      final SettingsBloc settingsBloc = SettingsBloc();
       expect(settingsBloc.state.customProperty, equals('Default Value'));
     });
 
     blocTest<SettingsBloc, SettingsState>(
       'CustomSettingsEvent emits nothing',
       build: SettingsBloc.new,
-      act: (bloc) => bloc.add(const CustomSettingsEvent()),
+      act: (SettingsBloc bloc) => bloc.add(const CustomSettingsEvent()),
       expect: () => <SettingsState>[],
     );
   });

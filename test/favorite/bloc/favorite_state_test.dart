@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const favoriteState = FavoriteState(
+          const FavoriteState favoriteState = FavoriteState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const favoriteState = FavoriteState(
+          const FavoriteState favoriteState = FavoriteState(
             customProperty: 'My property',
           );
-          final otherFavoriteState = FavoriteState(
+          final FavoriteState otherFavoriteState = FavoriteState(
             customProperty: 'My property 2',
           );
           expect(favoriteState, isNot(equals(otherFavoriteState)));

@@ -28,7 +28,7 @@ void main() {
         'copies correctly '
         'when no argument specified',
         () {
-          const historyState = HistoryState(
+          const HistoryState historyState = HistoryState(
             customProperty: 'My property',
           );
           expect(
@@ -42,10 +42,10 @@ void main() {
         'copies correctly '
         'when all arguments specified',
         () {
-          const historyState = HistoryState(
+          const HistoryState historyState = HistoryState(
             customProperty: 'My property',
           );
-          final otherHistoryState = HistoryState(
+          final HistoryState otherHistoryState = HistoryState(
             customProperty: 'My property 2',
           );
           expect(historyState, isNot(equals(otherHistoryState)));

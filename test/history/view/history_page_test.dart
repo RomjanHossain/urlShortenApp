@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:url_shorten/presentation/pages/history/history.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:url_shorten/presentation/pages/history/history.dart';
 
 void main() {
   group('HistoryPage', () {
@@ -12,7 +12,7 @@ void main() {
       });
     });
 
-    testWidgets('renders HistoryView', (tester) async {
+    testWidgets('renders HistoryView', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(home: HistoryPage()));
       expect(find.byType(HistoryView), findsOneWidget);
     });
