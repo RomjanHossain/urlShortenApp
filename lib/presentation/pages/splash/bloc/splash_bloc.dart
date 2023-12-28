@@ -22,9 +22,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     await Future<dynamic>.delayed(const Duration(seconds: 3));
     if (event.context.mounted) {
       // ignore: use_build_context_synchronously
-      await Navigator.push(
+      await Navigator.pushAndRemoveUntil(
         event.context,
         PageAnimationWrapper.fadeThroughTransitionPageWrapper(const HomePage()),
+        (_) => false,
       );
     }
   }
